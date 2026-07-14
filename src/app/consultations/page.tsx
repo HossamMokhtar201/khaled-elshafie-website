@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
+import NumberedProcess from "@/components/ui/NumberedProcess";
 import VideoCard from "@/components/cards/VideoCard";
 import { consultationServices } from "@/lib/content";
 
@@ -10,6 +11,21 @@ export const metadata: Metadata = {
   title: "الاستشارات",
   description: consultationServices.intro,
 };
+
+const bookingStepDescriptions = [
+  "تصفح الأيام المتاحة واختر اليوم المناسب لك.",
+  "بعد اختيار اليوم، هتظهرلك الأوقات المتاحة فيه — اختر الموعد الأنسب.",
+  "املأ بياناتك الأساسية وملاحظة مختصرة عن اللي محتاج تستشير فيه.",
+  "راجع ملخص حجزك وأكّد — هيتم التواصل معك لتأكيد الموعد.",
+];
+
+const bookingProcessSteps = consultationServices.bookingSteps.map(
+  (label, i) => ({
+    number: String(i + 1).padStart(2, "0"),
+    title: label,
+    description: bookingStepDescriptions[i],
+  }),
+);
 
 export default function ConsultationsPage() {
   return (
@@ -86,6 +102,23 @@ export default function ConsultationsPage() {
               احجز استشارتك الآن
             </Button>
           </Reveal>
+        </Container>
+      </section>
+
+      <section
+        aria-labelledby="how-to-book-heading"
+        className="border-t border-border py-20"
+      >
+        <Container>
+          <Reveal>
+            <h2
+              id="how-to-book-heading"
+              className="mb-12 font-heading text-3xl font-extrabold sm:text-4xl"
+            >
+              إزاي تحجز استشارتك؟
+            </h2>
+          </Reveal>
+          <NumberedProcess steps={bookingProcessSteps} />
         </Container>
       </section>
 

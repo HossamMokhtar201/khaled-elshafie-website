@@ -3,9 +3,12 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import StatsCounter from "@/components/ui/StatsCounter";
 import Reveal from "@/components/ui/Reveal";
+import Marquee from "@/components/ui/Marquee";
+import DraggableCarousel from "@/components/ui/DraggableCarousel";
 import BrandCard from "@/components/cards/BrandCard";
 import ProjectCard from "@/components/cards/ProjectCard";
 import VideoCard from "@/components/cards/VideoCard";
+import QuoteCard from "@/components/cards/QuoteCard";
 import {
   siteSettings,
   homeContent,
@@ -17,40 +20,50 @@ import {
   podcastEpisodes,
 } from "@/lib/content";
 
+const trustItems = [
+  "الإعلام 1",
+  "الإعلام 2",
+  "الإعلام 3",
+  "الإعلام 4",
+  "الإعلام 5",
+];
+
 export default function Home() {
   const featuredProjects = realEstateProjects.slice(0, 3);
   const featuredEpisodes = podcastEpisodes
     .filter((ep) => !ep.isPlaceholder)
     .slice(0, 2);
-  const tickerQuotes = quotes.slice(0, 3);
 
   return (
     <>
       {/* Hero */}
       <section
         aria-labelledby="hero-heading"
-        className="border-b border-border bg-primary-900 py-24 text-text-inverse"
+        className="bg-primary-950 py-24 text-text-on-dark sm:py-32"
       >
         <Container className="flex flex-col items-center gap-6 text-center">
-          <p className="font-quote text-2xl text-accent-400">
+          <span className="inline-flex items-center gap-2 rounded-pill border border-white/15 px-4 py-1.5 text-sm text-text-on-dark-muted">
+            <span aria-hidden="true" className="text-accent-500">
+              ★
+            </span>
             {siteSettings.tagline}
-          </p>
+          </span>
           <h1
             id="hero-heading"
-            className="font-heading text-5xl font-extrabold"
+            className="max-w-4xl font-heading text-display font-black leading-[1.05]"
           >
             {homeContent.hero.title}
           </h1>
-          <p className="max-w-xl text-lg text-text-inverse/80">
+          <p className="max-w-xl text-lg text-text-on-dark-muted">
             {homeContent.hero.subheadline}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button href={homeContent.hero.primaryCta.href} variant="primary">
-              {homeContent.hero.primaryCta.label}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <Button href={homeContent.hero.primaryCta.href} variant="accent">
+              {homeContent.hero.primaryCta.label} ↗
             </Button>
             <Link
               href={homeContent.hero.secondaryCta.href}
-              className="rounded-sm border border-accent-500 px-6 py-3 font-semibold transition-colors duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:bg-primary-800"
+              className="inline-flex items-center justify-center gap-2 rounded-pill border border-white/20 px-7 py-3.5 font-semibold text-text-on-dark transition-colors duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:bg-white/10"
             >
               {homeContent.hero.secondaryCta.label}
             </Link>
@@ -58,13 +71,35 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Stats Bar */}
+      {/* Trust marquee */}
       <section
-        aria-label="أرقام وإحصائيات"
-        className="border-b border-border bg-bg-alt py-10"
+        aria-label="موثوق من"
+        className="border-b border-border bg-bg py-10"
       >
         <Container>
-          <dl className="flex flex-wrap items-center justify-center gap-12">
+          <p className="mb-6 text-center text-sm text-text-muted">
+            موثوق من رواد أعمال وأصحاب مشاريع
+          </p>
+        </Container>
+        <Marquee
+          items={trustItems.map((label) => (
+            <span
+              key={label}
+              className="px-8 font-heading text-xl font-bold text-text-muted"
+            >
+              {label}
+            </span>
+          ))}
+        />
+      </section>
+
+      {/* Stats Bar — dark section */}
+      <section
+        aria-label="أرقام وإحصائيات"
+        className="bg-bg-dark-section py-16"
+      >
+        <Container>
+          <dl className="flex flex-wrap items-center justify-center gap-12 sm:gap-20">
             {stats.map((stat) => (
               <StatsCounter
                 key={stat.label}
@@ -77,32 +112,13 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Quotes ticker */}
-      <section aria-label="من أقواله" className="py-10">
-        <Container>
-          <ul className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
-            {tickerQuotes.map((q) => (
-              <li
-                key={q.id}
-                className="font-quote text-lg text-primary-800 sm:border-e sm:border-border sm:pe-4 last:border-none"
-              >
-                &ldquo;{q.text}&rdquo;
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
       {/* Brands */}
-      <section
-        aria-labelledby="brands-heading"
-        className="border-t border-border py-16"
-      >
+      <section aria-labelledby="brands-heading" className="py-20">
         <Container>
           <Reveal>
             <h2
               id="brands-heading"
-              className="mb-8 text-center font-heading text-3xl font-bold"
+              className="mb-10 text-center font-heading text-3xl font-extrabold sm:text-4xl"
             >
               البراندات
             </h2>
@@ -127,25 +143,47 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* Quotes carousel */}
+      <section
+        aria-labelledby="quotes-heading"
+        className="border-t border-border bg-bg-alt py-20"
+      >
+        <Container>
+          <Reveal>
+            <h2
+              id="quotes-heading"
+              className="mb-10 text-center font-heading text-3xl font-extrabold sm:text-4xl"
+            >
+              من أقواله
+            </h2>
+          </Reveal>
+          <DraggableCarousel
+            items={quotes.map((q) => (
+              <QuoteCard key={q.id} text={q.text} context={q.context} />
+            ))}
+          />
+        </Container>
+      </section>
+
       {/* Consultations CTA */}
       <section
         aria-labelledby="consultations-cta-heading"
-        className="border-y border-border bg-primary-800 py-16 text-text-inverse"
+        className="bg-primary-950 py-20 text-text-on-dark"
       >
         <Container className="text-center">
           <Reveal>
             <h2
               id="consultations-cta-heading"
-              className="font-heading text-3xl font-bold"
+              className="font-heading text-3xl font-extrabold sm:text-4xl"
             >
               {homeContent.consultationsCta.title}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-text-inverse/80">
+            <p className="mx-auto mt-4 max-w-2xl text-text-on-dark-muted">
               {homeContent.consultationsCta.description}
             </p>
             <Button
               href={homeContent.consultationsCta.cta.href}
-              variant="primary"
+              variant="accent"
               className="mt-6"
             >
               {homeContent.consultationsCta.cta.label}
@@ -155,12 +193,12 @@ export default function Home() {
       </section>
 
       {/* Real estate projects */}
-      <section aria-labelledby="real-estate-heading" className="py-16">
+      <section aria-labelledby="real-estate-heading" className="py-20">
         <Container>
-          <div className="mb-8 flex items-center justify-between">
+          <div className="mb-10 flex items-center justify-between">
             <h2
               id="real-estate-heading"
-              className="font-heading text-3xl font-bold"
+              className="font-heading text-3xl font-extrabold sm:text-4xl"
             >
               أحدث المشاريع العقارية
             </h2>
@@ -191,13 +229,13 @@ export default function Home() {
       {/* Content hub */}
       <section
         aria-labelledby="content-heading"
-        className="border-t border-border bg-bg-alt py-16"
+        className="border-t border-border bg-bg-alt py-20"
       >
         <Container>
-          <div className="mb-8 flex items-center justify-between">
+          <div className="mb-10 flex items-center justify-between">
             <h2
               id="content-heading"
-              className="font-heading text-3xl font-bold"
+              className="font-heading text-3xl font-extrabold sm:text-4xl"
             >
               أحدث المحتوى
             </h2>
@@ -222,12 +260,12 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section aria-labelledby="final-cta-heading" className="py-16">
+      <section aria-labelledby="final-cta-heading" className="py-20">
         <Container className="text-center">
           <Reveal>
             <h2
               id="final-cta-heading"
-              className="font-heading text-3xl font-bold"
+              className="font-heading text-3xl font-extrabold sm:text-4xl"
             >
               {homeContent.finalCta.title}
             </h2>

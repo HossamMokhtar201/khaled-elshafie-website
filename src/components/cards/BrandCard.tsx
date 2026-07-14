@@ -14,20 +14,29 @@ export default function BrandCard({
   return (
     <Link
       href={href}
-      className="group block rounded-md border border-border bg-surface p-6 shadow-sm transition-all duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:-translate-y-1 hover:border-accent-500 hover:shadow-md"
+      className="group block overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition-all duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:-translate-y-1.5 hover:shadow-hover"
     >
-      <span
-        className="mb-4 block h-1 w-10 rounded-full"
-        style={{ backgroundColor: accentColor ?? "var(--color-accent-500)" }}
-        aria-hidden="true"
-      />
-      <h3 className="font-heading text-xl font-bold text-text-primary">
-        {name}
-      </h3>
-      <p className="mt-2 text-text-secondary">{tagline}</p>
-      <span className="mt-4 inline-block font-semibold text-accent-600 group-hover:underline">
-        زور البراند ←
-      </span>
+      <div
+        className="aspect-[16/9] overflow-hidden"
+        style={{ backgroundColor: accentColor ?? "var(--color-primary-900)" }}
+      >
+        <div className="h-full w-full transition-transform duration-[var(--duration-section)] ease-[var(--ease-standard)] group-hover:scale-[1.04]" />
+      </div>
+      <div className="p-6">
+        <h3 className="font-heading text-xl font-bold text-text-primary">
+          {name}
+        </h3>
+        <p className="mt-2 text-text-secondary">{tagline}</p>
+        <span className="mt-4 inline-flex items-center gap-1 font-semibold text-accent-600">
+          زور البراند
+          <span
+            aria-hidden="true"
+            className="transition-transform duration-[var(--duration-micro)] ease-[var(--ease-standard)] group-hover:-translate-x-1"
+          >
+            ←
+          </span>
+        </span>
+      </div>
     </Link>
   );
 }

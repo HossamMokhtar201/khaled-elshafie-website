@@ -15,6 +15,20 @@
     "topics": ["إدارة وتوسع", "تسويق"],
     "isPlaceholder": false
   },
-  { "id": "placeholder-3", "title": "حلقة بودكاست قادمة", "youtubeUrl": null, "description": "PLACEHOLDER: حلقة جديدة قريبًا.", "topics": [], "isPlaceholder": true },
-  { "id": "placeholder-4", "title": "حلقة بودكاست قادمة", "youtubeUrl": null, "description": "PLACEHOLDER: حلقة جديدة قريبًا.", "topics": [], "isPlaceholder": true }
+  {
+    "id": "placeholder-3",
+    "title": "حلقة بودكاست قادمة",
+    "youtubeUrl": null,
+    "description": "PLACEHOLDER: حلقة جديدة قريبًا.",
+    "topics": [],
+    "isPlaceholder": true
+  },
+  {
+    "id": "placeholder-4",
+    "title": "حلقة بودكاست قادمة",
+    "youtubeUrl": null,
+    "description": "PLACEHOLDER: حلقة جديدة قريبًا.",
+    "topics": [],
+    "isPlaceholder": true
+  }
 ]
