@@ -1,0 +1,94 @@
+/*
+  Design Tokens — Single Source of Truth (mirrors /src/config/design-tokens.json)
+  Do not hardcode color/font/spacing values inside components — reference these
+  custom properties (directly or via the Tailwind theme in globals.css) only.
+  When the dashboard ships, its "Brand Identity" screen reads/writes the JSON
+  file and this CSS is regenerated from it.
+*/
+
+:root {
+  /* Primary palette — deep navy */
+  --color-primary-900: #0b1826;
+  --color-primary-800: #132434;
+  --color-primary-700: #1c3349;
+  --color-primary-600: #2a4763;
+  --color-primary-500: #3e5f82;
+
+  /* Accent — muted gold/bronze */
+  --color-accent-600: #9c7a34;
+  --color-accent-500: #b9924a;
+  --color-accent-400: #d2b476;
+
+  /* Neutrals — warm, paper-like */
+  --color-bg: #f7f5f0;
+  --color-bg-alt: #efeae0;
+  --color-surface: #ffffff;
+  --color-border: #e1dacb;
+  --color-border-strong: #c9bfa8;
+
+  /* Text */
+  --color-text-primary: #12202c;
+  --color-text-secondary: #5b5a52;
+  --color-text-muted: #8a8577;
+  --color-text-inverse: #f7f5f0;
+
+  /* Semantic */
+  --color-success: #2f6b4f;
+  --color-danger: #8c3b31;
+  --color-warning: var(--color-accent-500);
+
+  /* Sub-brand namespaces */
+  --brand-mokhzangy-primary: #111111;
+  --brand-mokhzangy-secondary: #c8102e;
+  --brand-mokhzangy-accent: #1e7b34;
+  --brand-mokhzangy-surface: #ffffff;
+
+  --brand-alibaba-primary: #d71920;
+  --brand-alibaba-secondary: #ffc72c;
+  --brand-alibaba-surface: #ffffff;
+
+  /* Typography */
+  --font-heading: "Noto Kufi Arabic", sans-serif;
+  --font-body: "IBM Plex Sans Arabic", sans-serif;
+  --font-quote: "Aref Ruqaa", serif;
+  --font-latin: "Inter", sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+  --text-5xl: 3.815rem;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(18, 32, 44, 0.06);
+  --shadow-md: 0 8px 24px rgba(18, 32, 44, 0.08);
+  --shadow-lg: 0 16px 48px rgba(18, 32, 44, 0.12);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-micro: 220ms;
+  --duration-section: 600ms;
+}

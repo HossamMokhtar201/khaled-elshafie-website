@@ -1,0 +1,91 @@
+{
+  "color": {
+    "primary": {
+      "900": "#0B1826",
+      "800": "#132434",
+      "700": "#1C3349",
+      "600": "#2A4763",
+      "500": "#3E5F82"
+    },
+    "accent": {
+      "600": "#9C7A34",
+      "500": "#B9924A",
+      "400": "#D2B476"
+    },
+    "bg": "#F7F5F0",
+    "bgAlt": "#EFEAE0",
+    "surface": "#FFFFFF",
+    "border": "#E1DACB",
+    "borderStrong": "#C9BFA8",
+    "text": {
+      "primary": "#12202C",
+      "secondary": "#5B5A52",
+      "muted": "#8A8577",
+      "inverse": "#F7F5F0"
+    },
+    "semantic": {
+      "success": "#2F6B4F",
+      "danger": "#8C3B31",
+      "warning": "#B9924A"
+    },
+    "brands": {
+      "mokhzangy": {
+        "primary": "#111111",
+        "secondary": "#C8102E",
+        "accent": "#1E7B34",
+        "surface": "#FFFFFF"
+      },
+      "alibaba": {
+        "primary": "#D71920",
+        "secondary": "#FFC72C",
+        "surface": "#FFFFFF"
+      }
+    }
+  },
+  "font": {
+    "heading": "'Noto Kufi Arabic', sans-serif",
+    "body": "'IBM Plex Sans Arabic', sans-serif",
+    "quote": "'Aref Ruqaa', serif",
+    "latin": "'Inter', sans-serif"
+  },
+  "typeScale": {
+    "xs": "0.75rem",
+    "sm": "0.875rem",
+    "base": "1rem",
+    "lg": "1.25rem",
+    "xl": "1.563rem",
+    "2xl": "1.953rem",
+    "3xl": "2.441rem",
+    "4xl": "3.052rem",
+    "5xl": "3.815rem"
+  },
+  "spacing": {
+    "1": "4px",
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "5": "20px",
+    "6": "24px",
+    "8": "32px",
+    "10": "40px",
+    "12": "48px",
+    "16": "64px",
+    "20": "80px",
+    "24": "96px"
+  },
+  "radius": {
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px"
+  },
+  "shadow": {
+    "sm": "0 1px 2px rgba(18,32,44,0.06)",
+    "md": "0 8px 24px rgba(18,32,44,0.08)",
+    "lg": "0 16px 48px rgba(18,32,44,0.12)"
+  },
+  "motion": {
+    "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "durationMicro": "220ms",
+    "durationSection": "600ms"
+  }
+}

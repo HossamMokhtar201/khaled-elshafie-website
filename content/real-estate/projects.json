@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "beit-elwatan-tg5",
+    "name": "بيت الوطن — التجمع الخامس",
+    "location": "الحي الأول، بيت الوطن، التجمع الخامس",
+    "status": "available",
+    "coverImage": "/images/real-estate/beit-elwatan-cover.jpg",
+    "isPlaceholder": false
+  },
+  {
+    "slug": "project-placeholder-2",
+    "name": "مشروع عقاري قادم",
+    "location": "PLACEHOLDER: الموقع يُحدَّد لاحقًا",
+    "status": "coming-soon",
+    "coverImage": "/images/real-estate/placeholder-cover.jpg",
+    "isPlaceholder": true
+  },
+  {
+    "slug": "project-placeholder-3",
+    "name": "مشروع عقاري قادم",
+    "location": "PLACEHOLDER: الموقع يُحدَّد لاحقًا",
+    "status": "coming-soon",
+    "coverImage": "/images/real-estate/placeholder-cover.jpg",
+    "isPlaceholder": true
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "siteName": "خالد الشافعي",
+  "tagline": "بقالي 30 سنة في السوق بتعلم",
+  "metaDescription": "خالد الشافعي — تاجر ومستشار أعمال بخبرة تتجاوز 30 عامًا في السوق المصري، مؤسس براندي المخزنجي وعلي بابا، ومقدم استشارات واستثمارات عقارية.",
+  "contact": {
+    "whatsappNote": "PLACEHOLDER: لم يتوفر رقم واتساب شخصي مباشر — استُخدم رابط صفحة فيسبوك (دردشة مع خالد) كقناة تواصل أساسية مؤقتًا",
+    "facebookUrl": "https://www.facebook.com/",
+    "facebookPageName": "دردشة مع خالد",
+    "facebookFollowers": "633K",
+    "alibabaMallawiWhatsapp": "+201063363133"
+  },
+  "nav": [
+    { "label": "الرئيسية", "href": "/" },
+    { "label": "من هو", "href": "/about" },
+    {
+      "label": "البراندات",
+      "href": "/brands",
+      "children": [
+        { "label": "المخزنجي", "href": "/brands/mokhzangy" },
+        { "label": "علي بابا", "href": "/brands/alibaba" }
+      ]
+    },
+    { "label": "الاستشارات", "href": "/consultations" },
+    { "label": "المحتوى", "href": "/content-hub" },
+    { "label": "الفرص الاستثمارية", "href": "/investments" },
+    { "label": "الوظائف", "href": "/careers" },
+    { "label": "تواصل", "href": "/contact" }
+  ],
+  "primaryCta": { "label": "احجز استشارة", "href": "/consultations/book" },
+  "footer": {
+    "quickLinks": [
+      { "label": "من هو خالد الشافعي", "href": "/about" },
+      { "label": "المخزنجي", "href": "/brands/mokhzangy" },
+      { "label": "علي بابا", "href": "/brands/alibaba" },
+      { "label": "الاستشارات", "href": "/consultations" },
+      { "label": "الفرص الاستثمارية", "href": "/investments" },
+      { "label": "الوظائف", "href": "/careers" }
+    ],
+    "legalLinks": [
+      { "label": "سياسة الخصوصية", "href": "/privacy" },
+      { "label": "الشروط والأحكام", "href": "/terms" }
+    ],
+    "copyright": "© خالد الشافعي. جميع الحقوق محفوظة."
+  }
+}

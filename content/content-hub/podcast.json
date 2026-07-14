@@ -1,0 +1,20 @@
+[
+  {
+    "id": "khaltah-sahriya",
+    "title": "الخلطة السحرية لنجاح مشروعك | تجربة المخزنجي كاملة",
+    "youtubeUrl": "https://www.youtube.com/watch?v=2a_qPa-66mY",
+    "description": "في هذه الحلقة من بودكاست 360، يروي خالد الشافعي قصة تأسيس المخزنجي بالتفصيل، من مخزن تحت الأرض إلى 35 فرعًا، وفلسفته في التسويق والتسعير والتوسع.",
+    "topics": ["تجارة تجزئة", "تسويق"],
+    "isPlaceholder": false
+  },
+  {
+    "id": "student-and-teacher",
+    "title": "إزاي تكون التلميذ والأستاذ في نفس الوقت؟ | أسرار التسويق الناجح",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RWwTxtdUd2o",
+    "description": "حوار معمّق حول مفهوم البراند، إدارة الفروع المتعددة، سلاسل الإمداد، وبناء فرق العمل، من واقع خبرة تتجاوز 30 عامًا.",
+    "topics": ["إدارة وتوسع", "تسويق"],
+    "isPlaceholder": false
+  },
+  { "id": "placeholder-3", "title": "حلقة بودكاست قادمة", "youtubeUrl": null, "description": "PLACEHOLDER: حلقة جديدة قريبًا.", "topics": [], "isPlaceholder": true },
+  { "id": "placeholder-4", "title": "حلقة بودكاست قادمة", "youtubeUrl": null, "description": "PLACEHOLDER: حلقة جديدة قريبًا.", "topics": [], "isPlaceholder": true }
+]

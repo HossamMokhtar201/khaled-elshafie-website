@@ -1,0 +1,8 @@
+[
+  { "id": "video-placeholder-1", "title": "فيديو مميز 1", "youtubeUrl": null, "topics": [], "isPlaceholder": true },
+  { "id": "video-placeholder-2", "title": "فيديو مميز 2", "youtubeUrl": null, "topics": [], "isPlaceholder": true },
+  { "id": "video-placeholder-3", "title": "فيديو مميز 3", "youtubeUrl": null, "topics": [], "isPlaceholder": true },
+  { "id": "video-placeholder-4", "title": "فيديو مميز 4", "youtubeUrl": null, "topics": [], "isPlaceholder": true },
+  { "id": "video-placeholder-5", "title": "فيديو مميز 5", "youtubeUrl": null, "topics": [], "isPlaceholder": true },
+  { "id": "video-placeholder-6", "title": "فيديو مميز 6", "youtubeUrl": null, "topics": [], "isPlaceholder": true }
+]
