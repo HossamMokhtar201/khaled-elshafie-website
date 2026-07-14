@@ -4,7 +4,7 @@
 |---|---|
 | Milestone 0 — Project Setup & Infrastructure | ✅ مكتمل |
 | Milestone 1 — UX Structure | ✅ مكتمل |
-| Milestone 2 — Design System Implementation (UI Kit) | ⏳ لم يبدأ |
+| Milestone 2 — Design System Implementation (UI Kit) | ✅ مكتمل |
 | Milestone 3 — Page-by-Page UI Application | ⏳ لم يبدأ |
 | Milestone 4 — Motion & Interaction Polish | ⏳ لم يبدأ |
 | Milestone 5 — Responsive & Accessibility QA | ⏳ لم يبدأ |
@@ -28,3 +28,10 @@
 - تقويم الحجز يقرأ من `content/consultations/availability.json` (Mock)، خطوات: يوم → موعد → بيانات العميل → ملخص → دفع (Placeholder) أو تأكيد بدون دفع.
 - قالب المشروع العقاري الديناميكي `generateStaticParams` من `projects.json`، مع fallback تلقائي لمشروعين Placeholder غير مكتملي البيانات (بدل صفحة 404).
 - تم التحقق يدويًا من عدم وجود أي رابط داخلي معطّل (مطابقة كل `href` في الكود مع المسارات المبنية فعليًا)، و`npm run build` و`npm run lint` ينجحان بدون أخطاء لكل الصفحات الـ24.
+
+## Milestone 2 — تفاصيل الإنجاز
+- مكتبة كومبوننتس معزولة بالتصميم النهائي بالكامل حسب قسم 3.6: `Button` (Primary/Secondary/Ghost/Link × 3 أحجام)، `Badge`، `Alert`، كروت (`BrandCard`, `ProjectCard`, `VideoCard`, `QuoteCard`, `TestimonialCard`)، حقول فورمز (`Input`, `Textarea`, `Select`, `FileUpload`) بحالات focus/error، `DateTimePicker`، `Modal`، `Drawer`، `Tabs`، `StatsCounter`، `Timeline`.
+- Header أصبح Responsive بالكامل: قائمة Desktop مع Dropdown، وDrawer للموبايل (باستخدام كومبوننت `Drawer` نفسه)، مع Sticky + خلفية Blur.
+- صفحة `/styleguide` الداخلية تعرض كل الكومبوننتس أعلاه بحالاتها المختلفة (بما فيها Disabled) للمراجعة الداخلية.
+- تم التحقق بصريًا فعليًا عبر تشغيل `next dev` وتصوير الصفحة الرئيسية و`/styleguide` على Desktop (1440px) — الألوان، التايبوجرافي (Noto Kufi Arabic / IBM Plex Sans Arabic / Aref Ruqaa)، RTL، وكل الكومبوننتس تظهر مطابقة لمواصفات قسم 3.
+- `npm run build` و`npm run lint` ينجحان بدون أخطاء (26 مسارًا الآن بعد إضافة `/styleguide`).
