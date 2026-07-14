@@ -4,38 +4,77 @@
   custom properties (directly or via the Tailwind theme in globals.css) only.
   When the dashboard ships, its "Brand Identity" screen reads/writes the JSON
   file and this CSS is regenerated from it.
+
+  v2 — "Modern Premium" (Framer-reference-driven), replacing the v1 classic
+  navy/paper palette. The v1 variable names (--color-primary-900, --color-bg,
+  --color-bg-alt, --color-border, --color-text-*...) are kept as aliases
+  pointing at the new v2 values, since Tailwind utility classes throughout
+  every component already reference those names (bg-primary-900, bg-bg-alt,
+  text-text-muted...). New v2-only tokens (bg-dark-section, accent-glow,
+  text-on-dark, radius-pill, shadow-hover, text-display) are additions used
+  by the new components. See ASSUMPTIONS.md for the accent/muted contrast fix.
 */
 
 :root {
-  /* Primary palette — deep navy */
-  --color-primary-900: #0b1826;
-  --color-primary-800: #132434;
-  --color-primary-700: #1c3349;
-  --color-primary-600: #2a4763;
-  --color-primary-500: #3e5f82;
+  /* ---- v2 raw palette ---- */
+  --v2-charcoal-950: #0a0a0b;
+  --v2-charcoal-900: #121214;
+  --v2-charcoal-800: #1c1c1f;
+  --v2-charcoal-700: #2a2a2e;
+  --v2-charcoal-600: #3d3d42;
+  --v2-charcoal-500: #55565c;
 
-  /* Accent — muted gold/bronze */
-  --color-accent-600: #7f642a;
-  --color-accent-500: #b9924a;
-  --color-accent-400: #d2b476;
+  /* accent-600 is darkened further than the spec's #B8863B so it stays
+     AA-safe (4.5:1) as text/links; accent-500/400 stay at spec value for
+     backgrounds, icons, borders, and underlines (not used as text). */
+  --v2-accent-600: #926a2f;
+  --v2-accent-500: #d4a24e;
+  --v2-accent-400: #e4be7a;
 
-  /* Neutrals — warm, paper-like */
-  --color-bg: #f7f5f0;
-  --color-bg-alt: #efeae0;
+  --v2-bg: #ffffff;
+  --v2-bg-subtle: #f7f7f8;
+  --v2-border: #e7e7ea;
+  --v2-border-strong: #d4d4d9;
+
+  --v2-text-primary: #121214;
+  --v2-text-secondary: #55565c;
+  --v2-text-muted: #717178; /* darkened from spec's #8A8A90 to stay AA-safe */
+  --v2-text-on-dark: #f7f7f8;
+  --v2-text-on-dark-muted: #a8a8ae;
+
+  /* ---- v1-name aliases (consumed by existing Tailwind classes) ---- */
+  --color-primary-900: var(--v2-charcoal-900);
+  --color-primary-800: var(--v2-charcoal-800);
+  --color-primary-700: var(--v2-charcoal-700);
+  --color-primary-600: var(--v2-charcoal-600);
+  --color-primary-500: var(--v2-charcoal-500);
+
+  --color-accent-600: var(--v2-accent-600);
+  --color-accent-500: var(--v2-accent-500);
+  --color-accent-400: var(--v2-accent-400);
+
+  --color-bg: var(--v2-bg);
+  --color-bg-alt: var(--v2-bg-subtle);
   --color-surface: #ffffff;
-  --color-border: #e1dacb;
-  --color-border-strong: #c9bfa8;
+  --color-border: var(--v2-border);
+  --color-border-strong: var(--v2-border-strong);
 
-  /* Text */
-  --color-text-primary: #12202c;
-  --color-text-secondary: #5b5a52;
-  --color-text-muted: #6e6a5f;
-  --color-text-inverse: #f7f5f0;
+  --color-text-primary: var(--v2-text-primary);
+  --color-text-secondary: var(--v2-text-secondary);
+  --color-text-muted: var(--v2-text-muted);
+  --color-text-inverse: var(--v2-text-on-dark);
 
-  /* Semantic */
-  --color-success: #2f6b4f;
-  --color-danger: #8c3b31;
+  --color-success: #2f8f5f;
+  --color-danger: #c1443a;
   --color-warning: var(--color-accent-500);
+
+  /* ---- v2-only additions (new components) ---- */
+  --color-primary-950: var(--v2-charcoal-950);
+  --color-bg-subtle: var(--v2-bg-subtle);
+  --color-bg-dark-section: var(--v2-charcoal-950);
+  --color-accent-glow: rgba(212, 162, 78, 0.15);
+  --color-text-on-dark: var(--v2-text-on-dark);
+  --color-text-on-dark-muted: var(--v2-text-on-dark-muted);
 
   /* Sub-brand namespaces */
   --brand-mokhzangy-primary: #111111;
@@ -50,18 +89,20 @@
   /* Typography */
   --font-heading: "Noto Kufi Arabic", sans-serif;
   --font-body: "IBM Plex Sans Arabic", sans-serif;
-  --font-quote: "Aref Ruqaa", serif;
+  --font-quote: "Noto Kufi Arabic", sans-serif;
   --font-latin: "Inter", sans-serif;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.563rem;
-  --text-2xl: 1.953rem;
-  --text-3xl: 2.441rem;
-  --text-4xl: 3.052rem;
-  --text-5xl: 3.815rem;
+  /* Type scale — larger than v1, display size added for the hero */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4rem;
+  --text-5xl: 5.5rem;
+  --text-display: clamp(2.75rem, 5vw + 1.5rem, 7rem);
 
   /* Spacing (4px base) */
   --space-1: 4px;
@@ -77,18 +118,21 @@
   --space-20: 80px;
   --space-24: 96px;
 
-  /* Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Radius — large and rounded, pill for primary buttons */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(18, 32, 44, 0.06);
-  --shadow-md: 0 8px 24px rgba(18, 32, 44, 0.08);
-  --shadow-lg: 0 16px 48px rgba(18, 32, 44, 0.12);
+  /* Shadows — deeper, with an accent-tinted hover shadow */
+  --shadow-sm: 0 2px 8px rgba(10, 10, 11, 0.06);
+  --shadow-md: 0 12px 32px rgba(10, 10, 11, 0.1);
+  --shadow-lg: 0 24px 64px rgba(10, 10, 11, 0.16);
+  --shadow-hover: 0 20px 48px rgba(212, 162, 78, 0.18);
 
   /* Motion */
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-micro: 220ms;
   --duration-section: 600ms;
+  --duration-marquee: 36s;
 }

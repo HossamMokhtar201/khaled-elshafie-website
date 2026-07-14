@@ -23,18 +23,29 @@ export default function ProjectCard({
   return (
     <Link
       href={href}
-      className="group block rounded-md border border-border bg-surface p-5 shadow-sm transition-all duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:-translate-y-1 hover:border-accent-500 hover:shadow-md"
+      className="group block overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition-all duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:-translate-y-1.5 hover:shadow-hover"
     >
-      <Badge tone={statusTone[status] ?? "neutral"}>
-        {projectStatusLabels[status] ?? status}
-      </Badge>
-      <h3 className="mt-3 font-heading text-lg font-bold text-text-primary">
-        {name}
-      </h3>
-      <p className="mt-1 text-sm text-text-secondary">{location}</p>
-      <span className="mt-3 inline-block text-sm font-semibold text-accent-600 group-hover:underline">
-        تفاصيل المشروع ←
-      </span>
+      <div className="aspect-[16/10] overflow-hidden bg-bg-alt">
+        <div className="h-full w-full transition-transform duration-[var(--duration-section)] ease-[var(--ease-standard)] group-hover:scale-[1.04]" />
+      </div>
+      <div className="p-5">
+        <Badge tone={statusTone[status] ?? "neutral"}>
+          {projectStatusLabels[status] ?? status}
+        </Badge>
+        <h3 className="mt-3 font-heading text-lg font-bold text-text-primary">
+          {name}
+        </h3>
+        <p className="mt-1 text-sm text-text-secondary">{location}</p>
+        <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent-600">
+          تفاصيل المشروع
+          <span
+            aria-hidden="true"
+            className="transition-transform duration-[var(--duration-micro)] ease-[var(--ease-standard)] group-hover:-translate-x-1"
+          >
+            ←
+          </span>
+        </span>
+      </div>
     </Link>
   );
 }
