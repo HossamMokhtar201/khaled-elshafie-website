@@ -21,7 +21,7 @@
       ]
     },
     { "label": "الاستشارات", "href": "/consultations" },
-    { "label": "المحتوى", "href": "/content-hub" },
+    { "label": "المحتوى", "href": "/content" },
     { "label": "الفرص الاستثمارية", "href": "/investments" },
     { "label": "الوظائف", "href": "/careers" },
     { "label": "تواصل", "href": "/contact" }

@@ -8,8 +8,28 @@ import mokhzangy from "@content/brands/mokhzangy.json";
 import alibaba from "@content/brands/alibaba.json";
 import consultationServices from "@content/consultations/services.json";
 import consultationAvailability from "@content/consultations/availability.json";
-import podcastEpisodes from "@content/content-hub/podcast.json";
-import featuredVideos from "@content/content-hub/videos.json";
+import podcastEpisodesJson from "@content/content-hub/podcast.json";
+import featuredVideosJson from "@content/content-hub/videos.json";
+
+export interface PodcastEpisode {
+  id: string;
+  title: string;
+  youtubeUrl: string | null;
+  description: string;
+  topics: string[];
+  isPlaceholder: boolean;
+}
+
+export interface FeaturedVideo {
+  id: string;
+  title: string;
+  youtubeUrl: string | null;
+  topics: string[];
+  isPlaceholder: boolean;
+}
+
+const podcastEpisodes: PodcastEpisode[] = podcastEpisodesJson;
+const featuredVideos: FeaturedVideo[] = featuredVideosJson;
 import realEstateProjects from "@content/real-estate/projects.json";
 import beitElwatan from "@content/real-estate/beit-elwatan-tg5.json";
 import unionSystem from "@content/real-estate/union-system.json";
@@ -45,5 +65,36 @@ const realEstateProjectDetails: Record<string, typeof beitElwatan> = {
 };
 
 export function getRealEstateProject(slug: string) {
-  return realEstateProjectDetails[slug] ?? null;
+  if (realEstateProjectDetails[slug]) {
+    return realEstateProjectDetails[slug];
+  }
+
+  const placeholderIndexEntry = realEstateProjects.find((p) => p.slug === slug);
+  if (!placeholderIndexEntry) {
+    return null;
+  }
+
+  return {
+    slug: placeholderIndexEntry.slug,
+    name: placeholderIndexEntry.name,
+    location: placeholderIndexEntry.location,
+    status: placeholderIndexEntry.status,
+    description:
+      "PLACEHOLDER: تفاصيل هذا المشروع سيتم إضافتها بمجرد توفر البيانات الفعلية. القالب جاهز بالكامل لاستقبالها من الداشبورد لاحقًا.",
+    delivery: {
+      timeline: "PLACEHOLDER",
+      finishing: "PLACEHOLDER",
+      features: [] as string[],
+    },
+    units: [] as {
+      id: string;
+      name: string;
+      area: string;
+      details: string;
+      downPayment: string;
+      remaining: string;
+    }[],
+    contractPdfUrl: "/documents/contract-placeholder.pdf",
+    gallery: [] as string[],
+  };
 }
