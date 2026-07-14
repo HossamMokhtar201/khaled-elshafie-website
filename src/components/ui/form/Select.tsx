@@ -8,11 +8,14 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
   { label, error, id, className = "", children, ...rest },
-  ref
+  ref,
 ) {
   return (
     <div>
-      <label htmlFor={id} className="mb-1 block text-sm font-semibold text-text-primary">
+      <label
+        htmlFor={id}
+        className="mb-1 block text-sm font-semibold text-text-primary"
+      >
         {label}
       </label>
       <select

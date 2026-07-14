@@ -25,11 +25,15 @@ export default function VideoCard({
       className="group block overflow-hidden rounded-md border border-border bg-surface shadow-sm transition-all duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:-translate-y-1 hover:border-accent-500 hover:shadow-md"
     >
       <div className="flex aspect-video items-center justify-center bg-primary-900 text-text-inverse">
-        <span aria-hidden="true" className="text-3xl">▶</span>
+        <span aria-hidden="true" className="text-3xl">
+          ▶
+        </span>
       </div>
       <div className="p-4">
         <h3 className="font-heading font-bold text-text-primary">{title}</h3>
-        {description && <p className="mt-1 text-sm text-text-secondary">{description}</p>}
+        {description && (
+          <p className="mt-1 text-sm text-text-secondary">{description}</p>
+        )}
       </div>
     </a>
   );

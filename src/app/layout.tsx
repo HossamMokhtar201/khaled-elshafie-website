@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { notoKufiArabic, ibmPlexSansArabic, arefRuqaa, inter } from "@/lib/fonts";
+import {
+  notoKufiArabic,
+  ibmPlexSansArabic,
+  arefRuqaa,
+  inter,
+} from "@/lib/fonts";
 import { siteSettings } from "@/lib/content";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";

@@ -39,7 +39,9 @@ export default function DateTimePicker({
 
       {activeDay && (
         <>
-          <p className="mb-2 text-sm font-semibold text-text-primary">اختر الموعد</p>
+          <p className="mb-2 text-sm font-semibold text-text-primary">
+            اختر الموعد
+          </p>
           <ul className="flex flex-wrap gap-2">
             {activeDay.slots.map((slot) => (
               <li key={slot}>

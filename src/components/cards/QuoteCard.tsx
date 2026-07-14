@@ -18,7 +18,11 @@ export default function QuoteCard({
       <blockquote className="font-quote text-2xl leading-relaxed text-primary-800">
         &ldquo;{text}&rdquo;
       </blockquote>
-      {context && <figcaption className="mt-3 text-sm text-text-muted">{context}</figcaption>}
+      {context && (
+        <figcaption className="mt-3 text-sm text-text-muted">
+          {context}
+        </figcaption>
+      )}
       {shareable && (
         <button
           type="button"

@@ -21,7 +21,9 @@ export default function BrandCard({
         style={{ backgroundColor: accentColor ?? "var(--color-accent-500)" }}
         aria-hidden="true"
       />
-      <h3 className="font-heading text-xl font-bold text-text-primary">{name}</h3>
+      <h3 className="font-heading text-xl font-bold text-text-primary">
+        {name}
+      </h3>
       <p className="mt-2 text-text-secondary">{tagline}</p>
       <span className="mt-4 inline-block font-semibold text-accent-600 group-hover:underline">
         زور البراند ←

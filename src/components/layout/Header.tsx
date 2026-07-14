@@ -1,17 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { siteSettings } from "@/lib/content";
 import Drawer from "@/components/ui/Drawer";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 80);
+      setHidden(y > lastScrollY.current && y > 160);
+      lastScrollY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur">
+    <header
+      className={`sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur transition-transform duration-[var(--duration-micro)] ease-[var(--ease-standard)] ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      } ${scrolled ? "shadow-sm" : ""}`}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
-        <Link href="/" className="font-heading text-xl font-bold text-primary-900">
+        <Link
+          href="/"
+          className="font-heading text-xl font-bold text-primary-900"
+        >
           {siteSettings.siteName}
         </Link>
 
@@ -63,12 +84,18 @@ export default function Header() {
             aria-label="فتح القائمة"
             className="rounded-sm p-2 text-text-primary hover:bg-bg-alt md:hidden"
           >
-            <span aria-hidden="true" className="block text-xl">☰</span>
+            <span aria-hidden="true" className="block text-xl">
+              ☰
+            </span>
           </button>
         </div>
       </div>
 
-      <Drawer open={mobileOpen} onClose={() => setMobileOpen(false)} title={siteSettings.siteName}>
+      <Drawer
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        title={siteSettings.siteName}
+      >
         <nav aria-label="التنقل الرئيسي (موبايل)">
           <ul className="space-y-1">
             {siteSettings.nav.map((item) => (

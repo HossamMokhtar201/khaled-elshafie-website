@@ -34,10 +34,15 @@ export default function Tabs({
       {tabs.map(
         (tab) =>
           active === tab.id && (
-            <div key={tab.id} role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`}>
+            <div
+              key={tab.id}
+              role="tabpanel"
+              id={`panel-${tab.id}`}
+              aria-labelledby={`tab-${tab.id}`}
+            >
               {tab.content}
             </div>
-          )
+          ),
       )}
     </div>
   );

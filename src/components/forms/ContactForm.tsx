@@ -23,7 +23,10 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <p role="status" className="rounded-md border border-success bg-surface p-4 text-success">
+      <p
+        role="status"
+        className="rounded-md border border-success bg-surface p-4 text-success"
+      >
         تم إرسال رسالتك بنجاح، هيتم الرد عليك في أقرب وقت.
       </p>
     );
@@ -39,7 +42,10 @@ export default function ContactForm() {
       className="grid max-w-md gap-4"
     >
       <div>
-        <label htmlFor="contact-name" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="contact-name"
+          className="mb-1 block text-sm font-semibold"
+        >
           الاسم
         </label>
         <input
@@ -48,10 +54,15 @@ export default function ContactForm() {
           {...register("name")}
           aria-invalid={!!errors.name}
         />
-        {errors.name && <p className="mt-1 text-sm text-danger">{errors.name.message}</p>}
+        {errors.name && (
+          <p className="mt-1 text-sm text-danger">{errors.name.message}</p>
+        )}
       </div>
       <div>
-        <label htmlFor="contact-phone" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="contact-phone"
+          className="mb-1 block text-sm font-semibold"
+        >
           رقم الموبايل
         </label>
         <input
@@ -60,10 +71,15 @@ export default function ContactForm() {
           {...register("phone")}
           aria-invalid={!!errors.phone}
         />
-        {errors.phone && <p className="mt-1 text-sm text-danger">{errors.phone.message}</p>}
+        {errors.phone && (
+          <p className="mt-1 text-sm text-danger">{errors.phone.message}</p>
+        )}
       </div>
       <div>
-        <label htmlFor="contact-message" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="contact-message"
+          className="mb-1 block text-sm font-semibold"
+        >
           رسالتك
         </label>
         <textarea
@@ -73,7 +89,9 @@ export default function ContactForm() {
           {...register("message")}
           aria-invalid={!!errors.message}
         />
-        {errors.message && <p className="mt-1 text-sm text-danger">{errors.message.message}</p>}
+        {errors.message && (
+          <p className="mt-1 text-sm text-danger">{errors.message.message}</p>
+        )}
       </div>
       <button
         type="submit"

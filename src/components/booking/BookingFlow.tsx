@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import type { consultationAvailability, consultationServices } from "@/lib/content";
+import type {
+  consultationAvailability,
+  consultationServices,
+} from "@/lib/content";
 
 const customerSchema = z.object({
   name: z.string().min(2, "الاسم مطلوب"),
@@ -32,7 +35,10 @@ export default function BookingFlow({
   const [customer, setCustomer] = useState<CustomerValues | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const availableDays = useMemo(() => availability.filter((d) => d.available), [availability]);
+  const availableDays = useMemo(
+    () => availability.filter((d) => d.available),
+    [availability],
+  );
 
   const {
     register,
@@ -42,7 +48,10 @@ export default function BookingFlow({
 
   if (submitted) {
     return (
-      <p role="status" className="rounded-md border border-success bg-surface p-6 text-success">
+      <p
+        role="status"
+        className="rounded-md border border-success bg-surface p-6 text-success"
+      >
         {successMessage}
       </p>
     );
@@ -68,7 +77,10 @@ export default function BookingFlow({
 
       {step === 1 && (
         <section aria-labelledby="step1-heading">
-          <h2 id="step1-heading" className="mb-4 font-heading text-xl font-bold">
+          <h2
+            id="step1-heading"
+            className="mb-4 font-heading text-xl font-bold"
+          >
             {steps[0]}
           </h2>
           <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5">
@@ -92,7 +104,10 @@ export default function BookingFlow({
 
       {step === 2 && selectedDate && (
         <section aria-labelledby="step2-heading">
-          <h2 id="step2-heading" className="mb-4 font-heading text-xl font-bold">
+          <h2
+            id="step2-heading"
+            className="mb-4 font-heading text-xl font-bold"
+          >
             {steps[1]} — {selectedDate}
           </h2>
           <ul className="flex flex-wrap gap-3">
@@ -113,7 +128,11 @@ export default function BookingFlow({
                 </li>
               ))}
           </ul>
-          <button type="button" onClick={() => setStep(1)} className="mt-6 text-sm text-accent-600 hover:underline">
+          <button
+            type="button"
+            onClick={() => setStep(1)}
+            className="mt-6 text-sm text-accent-600 hover:underline"
+          >
             ← رجوع لاختيار يوم آخر
           </button>
         </section>
@@ -121,7 +140,10 @@ export default function BookingFlow({
 
       {step === 3 && (
         <section aria-labelledby="step3-heading">
-          <h2 id="step3-heading" className="mb-4 font-heading text-xl font-bold">
+          <h2
+            id="step3-heading"
+            className="mb-4 font-heading text-xl font-bold"
+          >
             {steps[2]}
           </h2>
           <form
@@ -133,7 +155,10 @@ export default function BookingFlow({
             })}
           >
             <div>
-              <label htmlFor="name" className="mb-1 block text-sm font-semibold">
+              <label
+                htmlFor="name"
+                className="mb-1 block text-sm font-semibold"
+              >
                 الاسم
               </label>
               <input
@@ -142,10 +167,17 @@ export default function BookingFlow({
                 {...register("name")}
                 aria-invalid={!!errors.name}
               />
-              {errors.name && <p className="mt-1 text-sm text-danger">{errors.name.message}</p>}
+              {errors.name && (
+                <p className="mt-1 text-sm text-danger">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
             <div>
-              <label htmlFor="phone" className="mb-1 block text-sm font-semibold">
+              <label
+                htmlFor="phone"
+                className="mb-1 block text-sm font-semibold"
+              >
                 رقم الموبايل
               </label>
               <input
@@ -154,10 +186,17 @@ export default function BookingFlow({
                 {...register("phone")}
                 aria-invalid={!!errors.phone}
               />
-              {errors.phone && <p className="mt-1 text-sm text-danger">{errors.phone.message}</p>}
+              {errors.phone && (
+                <p className="mt-1 text-sm text-danger">
+                  {errors.phone.message}
+                </p>
+              )}
             </div>
             <div>
-              <label htmlFor="email" className="mb-1 block text-sm font-semibold">
+              <label
+                htmlFor="email"
+                className="mb-1 block text-sm font-semibold"
+              >
                 البريد الإلكتروني
               </label>
               <input
@@ -167,10 +206,17 @@ export default function BookingFlow({
                 {...register("email")}
                 aria-invalid={!!errors.email}
               />
-              {errors.email && <p className="mt-1 text-sm text-danger">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="mt-1 text-sm text-danger">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
             <div>
-              <label htmlFor="note" className="mb-1 block text-sm font-semibold">
+              <label
+                htmlFor="note"
+                className="mb-1 block text-sm font-semibold"
+              >
                 ملاحظة مختصرة عن المشكلة
               </label>
               <textarea
@@ -192,7 +238,10 @@ export default function BookingFlow({
 
       {step === 4 && customer && (
         <section aria-labelledby="step4-heading">
-          <h2 id="step4-heading" className="mb-4 font-heading text-xl font-bold">
+          <h2
+            id="step4-heading"
+            className="mb-4 font-heading text-xl font-bold"
+          >
             {steps[3]}
           </h2>
           <dl className="grid max-w-md gap-2 rounded-md border border-border bg-surface p-5 text-sm">
@@ -216,7 +265,9 @@ export default function BookingFlow({
           <div className="mt-6 flex flex-wrap gap-4">
             <button
               type="button"
-              onClick={() => router.push("/consultations/book/payment-placeholder")}
+              onClick={() =>
+                router.push("/consultations/book/payment-placeholder")
+              }
               className="rounded-sm bg-accent-500 px-6 py-3 font-semibold text-primary-900 hover:bg-accent-400"
             >
               الدفع

@@ -25,7 +25,10 @@ export default function Drawer({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-primary-900/60" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex justify-end bg-primary-900/60"
+      onClick={onClose}
+    >
       <div
         role="dialog"
         aria-modal="true"

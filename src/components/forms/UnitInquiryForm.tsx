@@ -13,7 +13,11 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-export default function UnitInquiryForm({ units }: { units: { id: string; name: string }[] }) {
+export default function UnitInquiryForm({
+  units,
+}: {
+  units: { id: string; name: string }[];
+}) {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -23,7 +27,10 @@ export default function UnitInquiryForm({ units }: { units: { id: string; name: 
 
   if (submitted) {
     return (
-      <p role="status" className="rounded-md border border-success bg-surface p-4 text-success">
+      <p
+        role="status"
+        className="rounded-md border border-success bg-surface p-4 text-success"
+      >
         تم استلام طلبك، هيتم التواصل معك لمناقشة تفاصيل الوحدة.
       </p>
     );
@@ -48,10 +55,15 @@ export default function UnitInquiryForm({ units }: { units: { id: string; name: 
           {...register("name")}
           aria-invalid={!!errors.name}
         />
-        {errors.name && <p className="mt-1 text-sm text-danger">{errors.name.message}</p>}
+        {errors.name && (
+          <p className="mt-1 text-sm text-danger">{errors.name.message}</p>
+        )}
       </div>
       <div>
-        <label htmlFor="unit-phone" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="unit-phone"
+          className="mb-1 block text-sm font-semibold"
+        >
           رقم الموبايل
         </label>
         <input
@@ -60,10 +72,15 @@ export default function UnitInquiryForm({ units }: { units: { id: string; name: 
           {...register("phone")}
           aria-invalid={!!errors.phone}
         />
-        {errors.phone && <p className="mt-1 text-sm text-danger">{errors.phone.message}</p>}
+        {errors.phone && (
+          <p className="mt-1 text-sm text-danger">{errors.phone.message}</p>
+        )}
       </div>
       <div>
-        <label htmlFor="unit-select" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="unit-select"
+          className="mb-1 block text-sm font-semibold"
+        >
           نوع الوحدة
         </label>
         <select
@@ -82,7 +99,9 @@ export default function UnitInquiryForm({ units }: { units: { id: string; name: 
             </option>
           ))}
         </select>
-        {errors.unit && <p className="mt-1 text-sm text-danger">{errors.unit.message}</p>}
+        {errors.unit && (
+          <p className="mt-1 text-sm text-danger">{errors.unit.message}</p>
+        )}
       </div>
       <button
         type="submit"

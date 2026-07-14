@@ -32,7 +32,10 @@ export default function BranchOpportunityForm() {
 
   if (submitted) {
     return (
-      <p role="status" className="rounded-md border border-success bg-surface p-4 text-success">
+      <p
+        role="status"
+        className="rounded-md border border-success bg-surface p-4 text-success"
+      >
         تم استلام طلبك بنجاح، هيتم التواصل معك قريبًا لمراجعة التقديم.
       </p>
     );
@@ -98,7 +101,10 @@ export default function BranchOpportunityForm() {
       </div>
 
       <div>
-        <label htmlFor="experience" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="experience"
+          className="mb-1 block text-sm font-semibold"
+        >
           الخبرة السابقة
         </label>
         <textarea
@@ -119,13 +125,17 @@ export default function BranchOpportunityForm() {
       <fieldset>
         <legend className="mb-1 text-sm font-semibold">التفرغ</legend>
         <label className="me-4 inline-flex items-center gap-2">
-          <input type="radio" value="full-time" {...register("availability")} /> تفرغ كامل
+          <input type="radio" value="full-time" {...register("availability")} />{" "}
+          تفرغ كامل
         </label>
         <label className="inline-flex items-center gap-2">
-          <input type="radio" value="part-time" {...register("availability")} /> غير متفرغ
+          <input type="radio" value="part-time" {...register("availability")} />{" "}
+          غير متفرغ
         </label>
         {errors.availability && (
-          <p className="mt-1 text-sm text-danger">{errors.availability.message}</p>
+          <p className="mt-1 text-sm text-danger">
+            {errors.availability.message}
+          </p>
         )}
       </fieldset>
 

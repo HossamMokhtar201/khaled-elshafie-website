@@ -14,7 +14,11 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-export default function CareerApplicationForm({ jobs }: { jobs: typeof CareersType }) {
+export default function CareerApplicationForm({
+  jobs,
+}: {
+  jobs: typeof CareersType;
+}) {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -24,7 +28,10 @@ export default function CareerApplicationForm({ jobs }: { jobs: typeof CareersTy
 
   if (submitted) {
     return (
-      <p role="status" className="rounded-md border border-success bg-surface p-4 text-success">
+      <p
+        role="status"
+        className="rounded-md border border-success bg-surface p-4 text-success"
+      >
         تم استلام طلب التقديم، هيتم مراجعة سيرتك الذاتية والتواصل معك قريبًا.
       </p>
     );
@@ -40,7 +47,10 @@ export default function CareerApplicationForm({ jobs }: { jobs: typeof CareersTy
       className="grid max-w-md gap-4"
     >
       <div>
-        <label htmlFor="career-name" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="career-name"
+          className="mb-1 block text-sm font-semibold"
+        >
           الاسم
         </label>
         <input
@@ -49,10 +59,15 @@ export default function CareerApplicationForm({ jobs }: { jobs: typeof CareersTy
           {...register("name")}
           aria-invalid={!!errors.name}
         />
-        {errors.name && <p className="mt-1 text-sm text-danger">{errors.name.message}</p>}
+        {errors.name && (
+          <p className="mt-1 text-sm text-danger">{errors.name.message}</p>
+        )}
       </div>
       <div>
-        <label htmlFor="career-phone" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="career-phone"
+          className="mb-1 block text-sm font-semibold"
+        >
           رقم الموبايل
         </label>
         <input
@@ -61,10 +76,15 @@ export default function CareerApplicationForm({ jobs }: { jobs: typeof CareersTy
           {...register("phone")}
           aria-invalid={!!errors.phone}
         />
-        {errors.phone && <p className="mt-1 text-sm text-danger">{errors.phone.message}</p>}
+        {errors.phone && (
+          <p className="mt-1 text-sm text-danger">{errors.phone.message}</p>
+        )}
       </div>
       <div>
-        <label htmlFor="career-job" className="mb-1 block text-sm font-semibold">
+        <label
+          htmlFor="career-job"
+          className="mb-1 block text-sm font-semibold"
+        >
           الوظيفة المتقدم لها
         </label>
         <select
@@ -83,7 +103,9 @@ export default function CareerApplicationForm({ jobs }: { jobs: typeof CareersTy
             </option>
           ))}
         </select>
-        {errors.jobId && <p className="mt-1 text-sm text-danger">{errors.jobId.message}</p>}
+        {errors.jobId && (
+          <p className="mt-1 text-sm text-danger">{errors.jobId.message}</p>
+        )}
       </div>
       <div>
         <label htmlFor="career-cv" className="mb-1 block text-sm font-semibold">

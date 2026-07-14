@@ -6,7 +6,7 @@
 | Milestone 1 — UX Structure | ✅ مكتمل |
 | Milestone 2 — Design System Implementation (UI Kit) | ✅ مكتمل |
 | Milestone 3 — Page-by-Page UI Application | ✅ مكتمل |
-| Milestone 4 — Motion & Interaction Polish | ⏳ لم يبدأ |
+| Milestone 4 — Motion & Interaction Polish | ✅ مكتمل |
 | Milestone 5 — Responsive & Accessibility QA | ⏳ لم يبدأ |
 | Milestone 6 — Performance, SEO & Deployment Readiness | ⏳ لم يبدأ |
 
@@ -43,3 +43,14 @@
 - **إصلاح خطأ حقيقي اكتُشف أثناء الاختبار الفعلي في المتصفح**: صفحة تفاصيل المشروع العقاري الديناميكي كانت تفشل (404) في وضع dev لأن Next.js 16 يجعل `params` كائن `Promise` يجب انتظاره بـ `await` بدل الوصول المتزامن؛ تم تصحيح `generateMetadata` والصفحة نفسها ليكونا `async` وينتظرا `params`.
 - تم التحقق البصري الفعلي (`next dev` + لقطات شاشة Desktop 1440px) لصفحات: الرئيسية، الاستشارات، تفاصيل مشروع بيت الوطن، بنك الاقتباسات، المحتوى — كلها متسقة بصريًا مع `/styleguide`.
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء لكل الصفحات الـ26.
+
+## Milestone 4 — تفاصيل الإنجاز
+- كومبوننت `Reveal` (Intersection Observer، مرة واحدة فقط) مطبّق على كل سكشنات المحتوى الرئيسية عبر كل الصفحات الـ21 المتبقية (بالإضافة للرئيسية ومن هو)، بما فيها Stagger delay للكروت في الشبكات (البراندات، المشاريع، الفيديوهات، الاقتباسات).
+- `StatsCounter` أصبح يحسب تصاعديًا (Count-up) فعليًا عند الدخول للـ viewport لأول مرة، باستخدام IntersectionObserver + requestAnimationFrame و easing متسق مع `--ease-standard`.
+- Header: يختفي عند التمرير لأسفل ويظهر فورًا عند التمرير لأعلى (hide-on-scroll)، مع ظل خفيف بعد أول شاشة — تم التحقق منه فعليًا بالتصوير أثناء التمرير.
+- زر `Button` (Primary/Secondary): تعبئة "Fill Sweep" تتحرك من اتجاه البداية المناسب لـ RTL عند الـ hover، بدل تغيير لون مباشر فقط.
+- `scroll-behavior: smooth` مفعّل على مستوى `<html>` (Milestone 0)، والانتقالات الدقيقة (hover/focus) بمدة 200-250ms، وانتقالات السكشن بمدة 500-700ms، عبر متغيرات `--duration-micro` / `--duration-section`.
+- **احترام `prefers-reduced-motion` تم اختباره فعليًا** (ليس افتراضًا نظريًا): عبر Playwright بسياق `reducedMotion: 'reduce'` على كل الصفحات — لا أخطاء Console، والمحتوى يظهر فورًا بدون انتظار حركة.
+- **إصلاح خطأين حقيقيين اكتُشفا أثناء الاختبار الفعلي بالمتصفح (Hydration Mismatch)**: كل من `StatsCounter` و`Reveal` كانا يستخدمان قيمة `useReducedMotion()` (من framer-motion) بشكل متزامن أثناء أول render لتحديد الحالة الابتدائية أو نوع العنصر المعروض، مما يسبب اختلاف بين HTML السيرفر ونتيجة أول render على العميل. تم حل المشكلة بجعل الحالة الابتدائية ثابتة ومطابقة للسيرفر دائمًا، وتأجيل أي قرار متعلق بتفضيل الحركة إلى داخل `useEffect` (بعد اكتمال الـ hydration).
+- تم التحقق من عدم وجود أي console/hydration errors على كل الصفحات الـ21 (وضعي الحركة العادي و`reduced motion`) عبر Playwright.
+- `npm run build` و`npm run lint` ينجحان بدون أخطاء. تمت إضافة `prettier` كأداة تنسيق دائمة (`npm run format`) بعد إعادة صياغة الكود المُولَّد آليًا لتوحيد المسافات.

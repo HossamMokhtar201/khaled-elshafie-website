@@ -7,11 +7,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { label, error, id, className = "", ...rest },
-  ref
+  ref,
 ) {
   return (
     <div>
-      <label htmlFor={id} className="mb-1 block text-sm font-semibold text-text-primary">
+      <label
+        htmlFor={id}
+        className="mb-1 block text-sm font-semibold text-text-primary"
+      >
         {label}
       </label>
       <input
