@@ -1,16 +1,17 @@
 # حالة المايلستونز
 
-| المايلستون | الحالة |
-|---|---|
-| Milestone 0 — Project Setup & Infrastructure | ✅ مكتمل |
-| Milestone 1 — UX Structure | ✅ مكتمل |
-| Milestone 2 — Design System Implementation (UI Kit) | ✅ مكتمل |
-| Milestone 3 — Page-by-Page UI Application | ✅ مكتمل |
-| Milestone 4 — Motion & Interaction Polish | ✅ مكتمل |
-| Milestone 5 — Responsive & Accessibility QA | ✅ مكتمل |
+| المايلستون                                            | الحالة   |
+| ----------------------------------------------------- | -------- |
+| Milestone 0 — Project Setup & Infrastructure          | ✅ مكتمل |
+| Milestone 1 — UX Structure                            | ✅ مكتمل |
+| Milestone 2 — Design System Implementation (UI Kit)   | ✅ مكتمل |
+| Milestone 3 — Page-by-Page UI Application             | ✅ مكتمل |
+| Milestone 4 — Motion & Interaction Polish             | ✅ مكتمل |
+| Milestone 5 — Responsive & Accessibility QA           | ✅ مكتمل |
 | Milestone 6 — Performance, SEO & Deployment Readiness | ✅ مكتمل |
 
 ## Milestone 0 — تفاصيل الإنجاز
+
 - تهيئة مشروع Next.js 16 (App Router) + TypeScript + Tailwind CSS v4.
 - Design Tokens معرّفة في `src/styles/tokens.css` (CSS custom properties) وملف موازٍ `src/config/design-tokens.json`، ومربوطة بـ Tailwind عبر `@theme inline` في `globals.css`.
 - بنية `/content/*.json` كاملة ومعبأة بالبيانات الفعلية من `docs/content-copy.md` والـ Placeholders الموثقة.
@@ -21,6 +22,7 @@
 - `npm run build` ينجح وينتج مجلد `/out` صالح للنشر الثابت.
 
 ## Milestone 1 — تفاصيل الإنجاز
+
 - بناء كل الصفحات (24 مسار) بهيكل HTML/JSX دلالي كامل (`landmarks`, headings صحيحة، fieldsets/labels للفورمز): الرئيسية، من هو، البراندات (فهرس + المخزنجي + علي بابا + فرص إدارة الفروع)، الاستشارات (فهرس + حجز 4 خطوات + placeholder دفع)، الكورس، المحتوى (بودكاست/فيديوهات بفلترة)، بنك الاقتباسات، الفرص الاستثمارية (فهرس + عقارات + قالب مشروع ديناميكي `[slug]` + فرص أخرى)، الوظائف، تواصل، الخصوصية، الشروط.
 - Header (مع Dropdown للبراندات عبر `details/summary`) وFooter مشتركان في `RootLayout`، مبنيان من `content/site-settings.json`.
 - كل المحتوى مسحوب من ملفات `/content/*.json` عبر `src/lib/content.ts` — صفر Hardcoding نصي.
@@ -30,6 +32,7 @@
 - تم التحقق يدويًا من عدم وجود أي رابط داخلي معطّل (مطابقة كل `href` في الكود مع المسارات المبنية فعليًا)، و`npm run build` و`npm run lint` ينجحان بدون أخطاء لكل الصفحات الـ24.
 
 ## Milestone 2 — تفاصيل الإنجاز
+
 - مكتبة كومبوننتس معزولة بالتصميم النهائي بالكامل حسب قسم 3.6: `Button` (Primary/Secondary/Ghost/Link × 3 أحجام)، `Badge`، `Alert`، كروت (`BrandCard`, `ProjectCard`, `VideoCard`, `QuoteCard`, `TestimonialCard`)، حقول فورمز (`Input`, `Textarea`, `Select`, `FileUpload`) بحالات focus/error، `DateTimePicker`، `Modal`، `Drawer`، `Tabs`، `StatsCounter`، `Timeline`.
 - Header أصبح Responsive بالكامل: قائمة Desktop مع Dropdown، وDrawer للموبايل (باستخدام كومبوننت `Drawer` نفسه)، مع Sticky + خلفية Blur.
 - صفحة `/styleguide` الداخلية تعرض كل الكومبوننتس أعلاه بحالاتها المختلفة (بما فيها Disabled) للمراجعة الداخلية.
@@ -37,6 +40,7 @@
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء (26 مسارًا الآن بعد إضافة `/styleguide`).
 
 ## Milestone 3 — تفاصيل الإنجاز
+
 - استبدال كل الأزرار/الكروت/الاقتباسات المبنية يدويًا في الصفحات بكومبوننتس `Button`, `BrandCard`, `ProjectCard`, `VideoCard`, `QuoteCard`, `StatsCounter`, `Timeline` من نظام التصميم (الرئيسية، من هو، البراندات، الاستشارات، المحتوى، بنك الاقتباسات، الفرص الاستثمارية، الكورس، صفحة الدفع Placeholder).
 - إضافة زر "مشاركة" فعلي (نسخ للحافظة) على `QuoteCard` في صفحة `/quotes`.
 - توحيد كروت الفيديو والبودكاست (`VideoCard`) بين الرئيسية وصفحة `/content` وأرشيف الاستشارات، بما فيها حالة Placeholder.
@@ -45,6 +49,7 @@
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء لكل الصفحات الـ26.
 
 ## Milestone 4 — تفاصيل الإنجاز
+
 - كومبوننت `Reveal` (Intersection Observer، مرة واحدة فقط) مطبّق على كل سكشنات المحتوى الرئيسية عبر كل الصفحات الـ21 المتبقية (بالإضافة للرئيسية ومن هو)، بما فيها Stagger delay للكروت في الشبكات (البراندات، المشاريع، الفيديوهات، الاقتباسات).
 - `StatsCounter` أصبح يحسب تصاعديًا (Count-up) فعليًا عند الدخول للـ viewport لأول مرة، باستخدام IntersectionObserver + requestAnimationFrame و easing متسق مع `--ease-standard`.
 - Header: يختفي عند التمرير لأسفل ويظهر فورًا عند التمرير لأعلى (hide-on-scroll)، مع ظل خفيف بعد أول شاشة — تم التحقق منه فعليًا بالتصوير أثناء التمرير.
@@ -56,6 +61,7 @@
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء. تمت إضافة `prettier` كأداة تنسيق دائمة (`npm run format`) بعد إعادة صياغة الكود المُولَّد آليًا لتوحيد المسافات.
 
 ## Milestone 5 — تفاصيل الإنجاز
+
 - فحص آلي شامل (Playwright) لكل الصفحات الـ21 على ثلاثة مقاسات: موبايل 375px، تابلت 768px، ديسكتوب 1440px — **صفر Horizontal Overflow** على أي صفحة/مقاس.
 - تأكيد عدم وجود أي CSS اتجاهي فيزيائي (`ml-`, `mr-`, `pl-`, `pr-`, `text-left`, `text-right`, `left-`, `right-`) في الكود بالكامل — كل شيء مبني بخصائص RTL منطقية (`ms-`, `me-`, `ps-`, `pe-`, `border-e`, `text-start`...) منذ البداية.
 - فحص إمكانية الوصول الآلي (axe-core) عبر كل الصفحات — **اكتُشفت مشكلتان حقيقيتان وتم حلّهما فعليًا (وليس توثيقهما فقط):**
@@ -66,6 +72,7 @@
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء بعد كل التعديلات.
 
 ## Milestone 6 — تفاصيل الإنجاز
+
 - إضافة `app/robots.ts` و`app/sitemap.ts` (مولَّدان وقت الـ build، متوافقان مع `output: 'export'` عبر `dynamic = "force-static"`) — يشملان كل الصفحات الثابتة + كل مشاريع `investments/real-estate/[slug]` ديناميكيًا من `projects.json`.
 - `metadataBase` + Open Graph + Twitter Card عامة في `RootLayout`، واستكمال `description` الناقص في 4 صفحات لم تكن تملكه (`/privacy`, `/terms`, `/investments/opportunities`, `/consultations/book/payment-placeholder` — الأخيرة أيضًا `robots: noindex` لأنها بلا محتوى فعلي).
 - **فحص Lighthouse فعلي** (Playwright + Chromium) على عدة صفحات: **Accessibility 100 / Best Practices 100 / SEO 100 / Performance (Desktop) 99**. النتيجة على الموبايل (محاكاة تقييد الشبكة) تراوحت 78-86 محليًا؛ تم تتبّع السبب حتى تفصيل مقاييس LCP الفعلية (~230ms) واتضح أنه أثر معروف لمحاكاة Lighthouse ضد `localhost` بدون ضغط/CDN حقيقيين (تفاصيل كاملة في `DEPLOYMENT.md`).
@@ -73,3 +80,16 @@
 - **حسم قرار الاستضافة نهائيًا**: Static Export على Hostinger (تفاصيل القرار والافتراض الموثّق لعدم توفر بيانات دخول Hostinger فعلية في `DEPLOYMENT.md` قسم 1، طبقًا لتعليمات البريف قسم 9 بعدم التوقف عند القرارات التي لا تحتاج تدخلًا بشريًا حقيقيًا).
 - `DEPLOYMENT.md` مكتمل بالكامل: خطوات الرفع الفعلية على Hostinger (File Manager/FTP، `.htaccess` للـ Clean URLs، SSL)، نتائج Lighthouse، وقائمة تحقق (Checklist) نهائية قبل الإطلاق الرسمي.
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء لكل الصفحات الـ28 (26 صفحة + `robots.txt` + `sitemap.xml`).
+
+## Design System v2 — "Modern Premium" (إعادة تنفيذ Milestone 2/3/4)
+
+بناءً على `docs/design-system-v2-modern.md` (يحل محل قسم 3 الكلاسيكي في البريف الأصلي)، تمت إعادة تنفيذ الديزاين سيستم بالكامل فوق نفس بنية `/content/` والمحتوى الجاهز من Milestone 0/1:
+
+- **الألوان والأشكال**: استبدال كامل للوحة الألوان (كحلي دافئ/ورقي → Charcoal شبه أسود + خلفيات بيضاء نضيفة + ذهبي أنضف) وزوايا الاستدارة (4-12px → 12-32px + Pill كامل للأزرار) في `tokens.css`/`design-tokens.json`، عبر استراتيجية Aliases تحافظ على كل أسماء الـ Tailwind classes القديمة (تفاصيل في `ARCHITECTURE.md` § 2.1).
+- **تصحيح تباين ألوان جديد**: نفس مشكلة Milestone 5 تكررت مع القيم الجديدة (`accent-600`, `text-muted`) — تم رصدها وإصلاحها بنفس المنهجية قبل أي Commit (راجع `ASSUMPTIONS.md` بند 15).
+- **مكونات جديدة**: `Marquee`, `NumberedProcess`, `DraggableCarousel` (embla-carousel-react)، `FAQAccordion` — أُضيفت لـ `/styleguide` بجانب المكونات الحالية بأشكالها الجديدة.
+- **Card Hover System**: تحديث `BrandCard`, `ProjectCard`, `VideoCard`, `QuoteCard` بصورة/منطقة تكبر خفيف عند الـ hover + ارتفاع الكارت + ظل بلون الأكسنت + حركة السهم.
+- **تطبيق على الصفحات**: الرئيسية (هيرو بـ Display type ضخم + Marquee ثقة + قسم إحصائيات بخلفية غامقة + كاروسيل اقتباسات قابل للسحب)، "من هو خالد الشافعي" (Timeline العمودي → Numbered Process)، الاستشارات (سكشن جديد "إزاي تحجز استشارتك؟" بخطوات مرقّمة)، العقارات (خطوات اتحاد الملاك → Numbered Process + الأسئلة الشائعة → FAQ Accordion تفاعلي فعلي).
+- **الخطوط**: إلغاء "Aref Ruqaa" بالكامل — الاقتباسات بخط العناوين "Noto Kufi Arabic" بلون الأكسنت، مع إضافة وزن Black (900) للعناوين الكبيرة.
+- **التحقق**: فحص شامل (Playwright) لكل الصفحات الـ21 — صفر console/hydration errors، صفر horizontal overflow. تم أيضًا معاينة لقطات شاشة حقيقية (Desktop) للرئيسية، "من هو"، والعقارات مقابل مراجع Clipzy/Videfo المُرفقة (راجع `ASSUMPTIONS.md` بند 18 لملاحظة حدود الوصول الشبكي في هذه البيئة).
+- `npm run build` و`npm run lint` ينجحان بدون أخطاء بعد كل التعديلات.

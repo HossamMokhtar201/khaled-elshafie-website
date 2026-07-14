@@ -74,7 +74,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             href={siteSettings.primaryCta.href}
-            className="hidden whitespace-nowrap rounded-sm bg-accent-500 px-4 py-2 text-sm font-semibold text-primary-900 hover:bg-accent-400 sm:inline-block"
+            className="hidden whitespace-nowrap rounded-pill bg-accent-500 px-5 py-2.5 text-sm font-semibold text-primary-950 transition-colors duration-[var(--duration-micro)] hover:bg-accent-400 sm:inline-block"
           >
             {siteSettings.primaryCta.label}
           </Link>
@@ -128,7 +128,7 @@ export default function Header() {
           <Link
             href={siteSettings.primaryCta.href}
             onClick={() => setMobileOpen(false)}
-            className="mt-6 block rounded-sm bg-accent-500 px-4 py-2 text-center font-semibold text-primary-900 hover:bg-accent-400"
+            className="mt-6 block rounded-pill bg-accent-500 px-5 py-3 text-center font-semibold text-primary-950 hover:bg-accent-400"
           >
             {siteSettings.primaryCta.label}
           </Link>

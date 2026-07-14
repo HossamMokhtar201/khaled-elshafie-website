@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-  notoKufiArabic,
-  ibmPlexSansArabic,
-  arefRuqaa,
-  inter,
-} from "@/lib/fonts";
+import { notoKufiArabic, ibmPlexSansArabic, inter } from "@/lib/fonts";
 import { siteSettings } from "@/lib/content";
 import { siteUrl } from "@/lib/site-url";
 import Header from "@/components/layout/Header";
@@ -42,7 +37,7 @@ export default function RootLayout({
     <html
       lang="ar"
       dir="rtl"
-      className={`${notoKufiArabic.variable} ${ibmPlexSansArabic.variable} ${arefRuqaa.variable} ${inter.variable} h-full antialiased`}
+      className={`${notoKufiArabic.variable} ${ibmPlexSansArabic.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text-primary">
         <Header />
