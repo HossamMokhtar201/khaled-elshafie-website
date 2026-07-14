@@ -4,7 +4,10 @@ import Reveal from "@/components/ui/Reveal";
 import PageHero from "@/components/ui/PageHero";
 import { legal } from "@/lib/content";
 
-export const metadata: Metadata = { title: legal.terms.title };
+export const metadata: Metadata = {
+  title: legal.terms.title,
+  description: legal.terms.paragraphs[0],
+};
 
 export default function TermsPage() {
   return (

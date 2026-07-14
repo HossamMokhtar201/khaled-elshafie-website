@@ -4,7 +4,11 @@ import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import { consultationServices } from "@/lib/content";
 
-export const metadata: Metadata = { title: "بوابة الدفع" };
+export const metadata: Metadata = {
+  title: "بوابة الدفع",
+  description: "بوابة الدفع الإلكتروني قيد التفعيل حاليًا.",
+  robots: { index: false, follow: false },
+};
 
 export default function PaymentPlaceholderPage() {
   return (

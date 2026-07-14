@@ -8,7 +8,7 @@ import {
 export const notoKufiArabic = Noto_Kufi_Arabic({
   variable: "--font-heading",
   subsets: ["arabic", "latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["700", "800"],
   display: "swap",
 });
 

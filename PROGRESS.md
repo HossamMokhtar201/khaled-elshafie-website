@@ -8,7 +8,7 @@
 | Milestone 3 — Page-by-Page UI Application | ✅ مكتمل |
 | Milestone 4 — Motion & Interaction Polish | ✅ مكتمل |
 | Milestone 5 — Responsive & Accessibility QA | ✅ مكتمل |
-| Milestone 6 — Performance, SEO & Deployment Readiness | ⏳ لم يبدأ |
+| Milestone 6 — Performance, SEO & Deployment Readiness | ✅ مكتمل |
 
 ## Milestone 0 — تفاصيل الإنجاز
 - تهيئة مشروع Next.js 16 (App Router) + TypeScript + Tailwind CSS v4.
@@ -64,3 +64,12 @@
 - بعد الإصلاحين: **صفر Violations من فئة serious/critical** على كل الصفحات الـ21.
 - التأكد من عمل التنقل بلوحة المفاتيح (Tab) بترتيب منطقي و`focus outline` ظاهر على كل عناصر الهيدر (روابط + Dropdown البراندات).
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء بعد كل التعديلات.
+
+## Milestone 6 — تفاصيل الإنجاز
+- إضافة `app/robots.ts` و`app/sitemap.ts` (مولَّدان وقت الـ build، متوافقان مع `output: 'export'` عبر `dynamic = "force-static"`) — يشملان كل الصفحات الثابتة + كل مشاريع `investments/real-estate/[slug]` ديناميكيًا من `projects.json`.
+- `metadataBase` + Open Graph + Twitter Card عامة في `RootLayout`، واستكمال `description` الناقص في 4 صفحات لم تكن تملكه (`/privacy`, `/terms`, `/investments/opportunities`, `/consultations/book/payment-placeholder` — الأخيرة أيضًا `robots: noindex` لأنها بلا محتوى فعلي).
+- **فحص Lighthouse فعلي** (Playwright + Chromium) على عدة صفحات: **Accessibility 100 / Best Practices 100 / SEO 100 / Performance (Desktop) 99**. النتيجة على الموبايل (محاكاة تقييد الشبكة) تراوحت 78-86 محليًا؛ تم تتبّع السبب حتى تفصيل مقاييس LCP الفعلية (~230ms) واتضح أنه أثر معروف لمحاكاة Lighthouse ضد `localhost` بدون ضغط/CDN حقيقيين (تفاصيل كاملة في `DEPLOYMENT.md`).
+- **تحسين أداء فعلي**: إزالة مكتبة `framer-motion` بالكامل من المشروع بعد أن أصبح الاعتماد الوحيد عليها (`StatsCounter`) قابلاً للتنفيذ بـ `IntersectionObserver` الأصلي — تقليل حجم الحزمة وتبعيات المشروع. كذلك تقليص أوزان خط Noto Kufi Arabic من 4 إلى وزنين (700/800) بعد التأكد أنهما الوحيدان المستخدَمان فعليًا.
+- **حسم قرار الاستضافة نهائيًا**: Static Export على Hostinger (تفاصيل القرار والافتراض الموثّق لعدم توفر بيانات دخول Hostinger فعلية في `DEPLOYMENT.md` قسم 1، طبقًا لتعليمات البريف قسم 9 بعدم التوقف عند القرارات التي لا تحتاج تدخلًا بشريًا حقيقيًا).
+- `DEPLOYMENT.md` مكتمل بالكامل: خطوات الرفع الفعلية على Hostinger (File Manager/FTP، `.htaccess` للـ Clean URLs، SSL)، نتائج Lighthouse، وقائمة تحقق (Checklist) نهائية قبل الإطلاق الرسمي.
+- `npm run build` و`npm run lint` ينجحان بدون أخطاء لكل الصفحات الـ28 (26 صفحة + `robots.txt` + `sitemap.xml`).

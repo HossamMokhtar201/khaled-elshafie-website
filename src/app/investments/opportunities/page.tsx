@@ -5,7 +5,10 @@ import Reveal from "@/components/ui/Reveal";
 import PageHero from "@/components/ui/PageHero";
 import { investmentOpportunities } from "@/lib/content";
 
-export const metadata: Metadata = { title: "فرص استثمارية أخرى" };
+export const metadata: Metadata = {
+  title: "فرص استثمارية أخرى",
+  description: investmentOpportunities.ecommerce.capital,
+};
 
 export default function OtherOpportunitiesPage() {
   const { ecommerce } = investmentOpportunities;

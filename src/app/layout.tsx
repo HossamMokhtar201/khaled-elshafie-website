@@ -6,11 +6,13 @@ import {
   inter,
 } from "@/lib/fonts";
 import { siteSettings } from "@/lib/content";
+import { siteUrl } from "@/lib/site-url";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: siteSettings.siteName,
     template: `%s | ${siteSettings.siteName}`,
@@ -19,8 +21,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteSettings.siteName,
     description: siteSettings.metaDescription,
+    url: siteUrl,
+    siteName: siteSettings.siteName,
     locale: "ar_EG",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteSettings.siteName,
+    description: siteSettings.metaDescription,
   },
 };
 
