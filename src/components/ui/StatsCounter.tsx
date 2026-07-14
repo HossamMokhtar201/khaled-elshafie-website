@@ -38,12 +38,11 @@ export default function StatsCounter({
 
   return (
     <div ref={ref} className="flex flex-col items-center text-center">
-      <dt className="sr-only">{label}</dt>
       <dd className="font-heading text-4xl font-bold text-primary-700">
         {display}
         {suffix}
       </dd>
-      <p className="mt-1 max-w-[10rem] text-sm text-text-secondary">{label}</p>
+      <dd className="mt-1 max-w-[10rem] text-sm text-text-secondary">{label}</dd>
     </div>
   );
 }
