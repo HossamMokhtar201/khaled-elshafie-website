@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/ui/PageHero";
+import Timeline from "@/components/ui/Timeline";
+import QuoteCard from "@/components/cards/QuoteCard";
 import { aboutContent, timeline, quotes, siteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -19,15 +21,7 @@ export default function AboutPage() {
           <h2 id="timeline-heading" className="mb-8 font-heading text-3xl font-bold">
             الرحلة الزمنية
           </h2>
-          <ol className="space-y-6 border-e-2 border-accent-500 pe-6">
-            {timeline.map((stop) => (
-              <li key={stop.title}>
-                <p className="font-heading text-sm font-bold text-accent-600">{stop.year}</p>
-                <h3 className="font-heading text-lg font-bold">{stop.title}</h3>
-                <p className="mt-1 text-text-secondary">{stop.description}</p>
-              </li>
-            ))}
-          </ol>
+          <Timeline items={timeline} />
         </Container>
       </section>
 
@@ -52,9 +46,8 @@ export default function AboutPage() {
           </div>
           <ul className="grid gap-6 sm:grid-cols-2">
             {quotes.slice(0, 4).map((q) => (
-              <li key={q.id} className="rounded-md border border-border bg-surface p-5">
-                <p className="font-quote text-xl text-primary-800">&ldquo;{q.text}&rdquo;</p>
-                <p className="mt-2 text-sm text-text-muted">{q.context}</p>
+              <li key={q.id}>
+                <QuoteCard text={q.text} context={q.context} />
               </li>
             ))}
           </ul>

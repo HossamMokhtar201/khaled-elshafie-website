@@ -5,7 +5,7 @@
 | Milestone 0 — Project Setup & Infrastructure | ✅ مكتمل |
 | Milestone 1 — UX Structure | ✅ مكتمل |
 | Milestone 2 — Design System Implementation (UI Kit) | ✅ مكتمل |
-| Milestone 3 — Page-by-Page UI Application | ⏳ لم يبدأ |
+| Milestone 3 — Page-by-Page UI Application | ✅ مكتمل |
 | Milestone 4 — Motion & Interaction Polish | ⏳ لم يبدأ |
 | Milestone 5 — Responsive & Accessibility QA | ⏳ لم يبدأ |
 | Milestone 6 — Performance, SEO & Deployment Readiness | ⏳ لم يبدأ |
@@ -35,3 +35,11 @@
 - صفحة `/styleguide` الداخلية تعرض كل الكومبوننتس أعلاه بحالاتها المختلفة (بما فيها Disabled) للمراجعة الداخلية.
 - تم التحقق بصريًا فعليًا عبر تشغيل `next dev` وتصوير الصفحة الرئيسية و`/styleguide` على Desktop (1440px) — الألوان، التايبوجرافي (Noto Kufi Arabic / IBM Plex Sans Arabic / Aref Ruqaa)، RTL، وكل الكومبوننتس تظهر مطابقة لمواصفات قسم 3.
 - `npm run build` و`npm run lint` ينجحان بدون أخطاء (26 مسارًا الآن بعد إضافة `/styleguide`).
+
+## Milestone 3 — تفاصيل الإنجاز
+- استبدال كل الأزرار/الكروت/الاقتباسات المبنية يدويًا في الصفحات بكومبوننتس `Button`, `BrandCard`, `ProjectCard`, `VideoCard`, `QuoteCard`, `StatsCounter`, `Timeline` من نظام التصميم (الرئيسية، من هو، البراندات، الاستشارات، المحتوى، بنك الاقتباسات، الفرص الاستثمارية، الكورس، صفحة الدفع Placeholder).
+- إضافة زر "مشاركة" فعلي (نسخ للحافظة) على `QuoteCard` في صفحة `/quotes`.
+- توحيد كروت الفيديو والبودكاست (`VideoCard`) بين الرئيسية وصفحة `/content` وأرشيف الاستشارات، بما فيها حالة Placeholder.
+- **إصلاح خطأ حقيقي اكتُشف أثناء الاختبار الفعلي في المتصفح**: صفحة تفاصيل المشروع العقاري الديناميكي كانت تفشل (404) في وضع dev لأن Next.js 16 يجعل `params` كائن `Promise` يجب انتظاره بـ `await` بدل الوصول المتزامن؛ تم تصحيح `generateMetadata` والصفحة نفسها ليكونا `async` وينتظرا `params`.
+- تم التحقق البصري الفعلي (`next dev` + لقطات شاشة Desktop 1440px) لصفحات: الرئيسية، الاستشارات، تفاصيل مشروع بيت الوطن، بنك الاقتباسات، المحتوى — كلها متسقة بصريًا مع `/styleguide`.
+- `npm run build` و`npm run lint` ينجحان بدون أخطاء لكل الصفحات الـ26.

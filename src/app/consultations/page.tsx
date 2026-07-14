@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/ui/PageHero";
+import Button from "@/components/ui/Button";
+import VideoCard from "@/components/cards/VideoCard";
 import { consultationServices } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -51,12 +52,9 @@ export default function ConsultationsPage() {
               </li>
             ))}
           </ul>
-          <Link
-            href="/consultations/book"
-            className="mt-8 inline-block rounded-sm bg-accent-500 px-6 py-3 font-semibold text-primary-900 hover:bg-accent-400"
-          >
+          <Button href="/consultations/book" variant="primary" className="mt-8">
             احجز استشارتك الآن
-          </Link>
+          </Button>
         </Container>
       </section>
 
@@ -67,11 +65,8 @@ export default function ConsultationsPage() {
           </h2>
           <ul className="grid gap-6 sm:grid-cols-3">
             {Array.from({ length: consultationServices.archivePlaceholderCount }).map((_, i) => (
-              <li
-                key={i}
-                className="flex aspect-video items-center justify-center rounded-md border border-dashed border-border-strong bg-bg-alt text-sm text-text-muted"
-              >
-                فيديو استشارة (قريبًا)
+              <li key={i}>
+                <VideoCard title="فيديو استشارة (قريبًا)" isPlaceholder />
               </li>
             ))}
           </ul>

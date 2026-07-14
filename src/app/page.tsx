@@ -1,5 +1,10 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import StatsCounter from "@/components/ui/StatsCounter";
+import BrandCard from "@/components/cards/BrandCard";
+import ProjectCard from "@/components/cards/ProjectCard";
+import VideoCard from "@/components/cards/VideoCard";
 import {
   siteSettings,
   homeContent,
@@ -30,15 +35,12 @@ export default function Home() {
           </h1>
           <p className="max-w-xl text-lg text-text-inverse/80">{homeContent.hero.subheadline}</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href={homeContent.hero.primaryCta.href}
-              className="rounded-sm bg-accent-500 px-6 py-3 font-semibold text-primary-900 hover:bg-accent-400"
-            >
+            <Button href={homeContent.hero.primaryCta.href} variant="primary">
               {homeContent.hero.primaryCta.label}
-            </Link>
+            </Button>
             <Link
               href={homeContent.hero.secondaryCta.href}
-              className="rounded-sm border border-accent-500 px-6 py-3 font-semibold hover:bg-primary-800"
+              className="rounded-sm border border-accent-500 px-6 py-3 font-semibold transition-colors duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:bg-primary-800"
             >
               {homeContent.hero.secondaryCta.label}
             </Link>
@@ -51,14 +53,7 @@ export default function Home() {
         <Container>
           <dl className="flex flex-wrap items-center justify-center gap-12">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center text-center">
-                <dt className="sr-only">{stat.label}</dt>
-                <dd className="font-heading text-4xl font-bold text-primary-700">
-                  {stat.value}
-                  {stat.suffix}
-                </dd>
-                <p className="mt-1 max-w-[10rem] text-sm text-text-secondary">{stat.label}</p>
-              </div>
+              <StatsCounter key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} />
             ))}
           </dl>
         </Container>
@@ -87,26 +82,13 @@ export default function Home() {
             البراندات
           </h2>
           <div className="grid gap-6 sm:grid-cols-2">
-            <article className="rounded-md border border-border bg-surface p-6">
-              <h3 className="font-heading text-xl font-bold">{mokhzangy.name}</h3>
-              <p className="mt-2 text-text-secondary">{mokhzangy.tagline}</p>
-              <Link
-                href="/brands/mokhzangy"
-                className="mt-4 inline-block font-semibold text-accent-600 hover:underline"
-              >
-                زور البراند ←
-              </Link>
-            </article>
-            <article className="rounded-md border border-border bg-surface p-6">
-              <h3 className="font-heading text-xl font-bold">{alibaba.fullName}</h3>
-              <p className="mt-2 text-text-secondary">{alibaba.tagline}</p>
-              <Link
-                href="/brands/alibaba"
-                className="mt-4 inline-block font-semibold text-accent-600 hover:underline"
-              >
-                زور البراند ←
-              </Link>
-            </article>
+            <BrandCard name={mokhzangy.name} tagline={mokhzangy.tagline} href="/brands/mokhzangy" />
+            <BrandCard
+              name={alibaba.fullName}
+              tagline={alibaba.tagline}
+              href="/brands/alibaba"
+              accentColor="var(--brand-alibaba-primary)"
+            />
           </div>
         </Container>
       </section>
@@ -120,12 +102,9 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-2xl text-text-inverse/80">
             {homeContent.consultationsCta.description}
           </p>
-          <Link
-            href={homeContent.consultationsCta.cta.href}
-            className="mt-6 inline-block rounded-sm bg-accent-500 px-6 py-3 font-semibold text-primary-900 hover:bg-accent-400"
-          >
+          <Button href={homeContent.consultationsCta.cta.href} variant="primary" className="mt-6">
             {homeContent.consultationsCta.cta.label}
-          </Link>
+          </Button>
         </Container>
       </section>
 
@@ -142,15 +121,13 @@ export default function Home() {
           </div>
           <ul className="grid gap-6 sm:grid-cols-3">
             {featuredProjects.map((project) => (
-              <li key={project.slug} className="rounded-md border border-border bg-surface p-5">
-                <h3 className="font-heading text-lg font-bold">{project.name}</h3>
-                <p className="mt-1 text-sm text-text-secondary">{project.location}</p>
-                <Link
+              <li key={project.slug}>
+                <ProjectCard
+                  name={project.name}
+                  location={project.location}
+                  status={project.status}
                   href={`/investments/real-estate/${project.slug}`}
-                  className="mt-3 inline-block text-sm font-semibold text-accent-600 hover:underline"
-                >
-                  تفاصيل المشروع ←
-                </Link>
+                />
               </li>
             ))}
           </ul>
@@ -170,17 +147,8 @@ export default function Home() {
           </div>
           <ul className="grid gap-6 sm:grid-cols-2">
             {featuredEpisodes.map((ep) => (
-              <li key={ep.id} className="rounded-md border border-border bg-surface p-5">
-                <h3 className="font-heading text-lg font-bold">{ep.title}</h3>
-                <p className="mt-2 text-sm text-text-secondary">{ep.description}</p>
-                <a
-                  href={ep.youtubeUrl ?? undefined}
-                  className="mt-3 inline-block text-sm font-semibold text-accent-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  مشاهدة الحلقة ←
-                </a>
+              <li key={ep.id}>
+                <VideoCard title={ep.title} description={ep.description} href={ep.youtubeUrl} />
               </li>
             ))}
           </ul>
@@ -196,12 +164,9 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-2xl text-text-secondary">
             {homeContent.finalCta.description}
           </p>
-          <Link
-            href={homeContent.finalCta.cta.href}
-            className="mt-6 inline-block rounded-sm bg-primary-900 px-6 py-3 font-semibold text-text-inverse hover:bg-primary-700"
-          >
+          <Button href={homeContent.finalCta.cta.href} variant="secondary" className="mt-6">
             {homeContent.finalCta.cta.label}
-          </Link>
+          </Button>
         </Container>
       </section>
     </>

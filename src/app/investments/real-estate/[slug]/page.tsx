@@ -10,13 +10,23 @@ export function generateStaticParams() {
   return realEstateProjects.map((project) => ({ slug: project.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const project = getRealEstateProject(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getRealEstateProject(slug);
   return { title: project?.name ?? "مشروع عقاري" };
 }
 
-export default function RealEstateProjectPage({ params }: { params: { slug: string } }) {
-  const project = getRealEstateProject(params.slug);
+export default async function RealEstateProjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = getRealEstateProject(slug);
 
   if (!project) {
     notFound();
@@ -94,7 +104,7 @@ export default function RealEstateProjectPage({ params }: { params: { slug: stri
           )}
           <a
             href={project.contractPdfUrl}
-            className="mt-6 inline-block rounded-sm border border-border-strong px-6 py-3 font-semibold hover:bg-bg-alt"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-sm border border-primary-900 px-6 py-3 font-semibold text-primary-900 transition-colors duration-[var(--duration-micro)] ease-[var(--ease-standard)] hover:bg-primary-900 hover:text-text-inverse"
           >
             تحميل نموذج العقد (PDF)
           </a>
