@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "../styles/tokens.css";
+@import "../../styles/tokens.css";
 
 @theme inline {
   --color-primary-900: var(--color-primary-900);
