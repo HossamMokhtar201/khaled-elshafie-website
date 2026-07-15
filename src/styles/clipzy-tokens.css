@@ -1,0 +1,80 @@
+/*
+  Design tokens for the isolated /clipzy-preview route only.
+  Kept separate from /src/styles/tokens.css (the live site's tokens) on
+  purpose — this route is a standalone visual/interaction clone staged for
+  approval before real content lands, not a variant of the existing site.
+*/
+
+:root {
+  /* ---- color ---- */
+  --cz-bg: #f4efe4;
+  --cz-bg-alt: #ffffff;
+  --cz-bg-subtle: #ece5d5;
+  --cz-ink: #17140f;
+  --cz-ink-soft: #6f6a5f;
+  --cz-ink-faint: #a29c8c;
+  --cz-border: #e4dcc9;
+  --cz-border-strong: #d6cbb0;
+
+  --cz-accent: #fb4b2c;
+  --cz-accent-dark: #dd3a1c;
+  --cz-accent-soft: #fde3da;
+
+  --cz-dark: #15120d;
+  --cz-dark-alt: #211c15;
+  --cz-on-dark: #f4efe4;
+  --cz-on-dark-soft: #b5ad9a;
+
+  --cz-white: #ffffff;
+
+  /* ---- type ---- */
+  --cz-font-sans: var(--cz-font-latin, "Plus Jakarta Sans", sans-serif);
+  --cz-font-accent: var(--cz-font-serif-italic, "Instrument Serif", serif);
+  --cz-font-arabic: var(--cz-font-cairo, "Cairo", sans-serif);
+
+  --cz-text-xs: 0.8125rem;
+  --cz-text-sm: 0.9375rem;
+  --cz-text-base: 1.0625rem;
+  --cz-text-lg: 1.25rem;
+  --cz-text-xl: 1.5rem;
+  --cz-text-2xl: 2rem;
+  --cz-text-3xl: 2.75rem;
+  --cz-text-4xl: 3.5rem;
+  --cz-text-display: clamp(2.5rem, 4.5vw + 1.25rem, 5.5rem);
+
+  /* ---- spacing ---- */
+  --cz-space-1: 4px;
+  --cz-space-2: 8px;
+  --cz-space-3: 12px;
+  --cz-space-4: 16px;
+  --cz-space-5: 20px;
+  --cz-space-6: 24px;
+  --cz-space-8: 32px;
+  --cz-space-10: 40px;
+  --cz-space-12: 48px;
+  --cz-space-16: 64px;
+  --cz-space-20: 80px;
+  --cz-space-28: 112px;
+  --cz-section-y: clamp(64px, 9vw, 140px);
+
+  /* ---- radius ---- */
+  --cz-radius-sm: 12px;
+  --cz-radius-md: 20px;
+  --cz-radius-lg: 28px;
+  --cz-radius-xl: 36px;
+  --cz-radius-pill: 999px;
+
+  /* ---- shadow ---- */
+  --cz-shadow-sm: 0 2px 8px rgba(23, 20, 15, 0.06);
+  --cz-shadow-md: 0 12px 32px rgba(23, 20, 15, 0.1);
+  --cz-shadow-lg: 0 24px 60px rgba(23, 20, 15, 0.16);
+  --cz-shadow-accent: 0 16px 36px rgba(251, 75, 44, 0.28);
+
+  /* ---- motion ---- */
+  --cz-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --cz-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --cz-duration-micro: 0.2s;
+  --cz-duration-hover: 0.35s;
+  --cz-duration-reveal: 0.7s;
+  --cz-marquee-duration: 32s;
+}

@@ -1,0 +1,109 @@
+@import "tailwindcss";
+@import "../../styles/clipzy-tokens.css";
+
+@theme inline {
+  --color-cz-bg: var(--cz-bg);
+  --color-cz-bg-alt: var(--cz-bg-alt);
+  --color-cz-bg-subtle: var(--cz-bg-subtle);
+  --color-cz-ink: var(--cz-ink);
+  --color-cz-ink-soft: var(--cz-ink-soft);
+  --color-cz-ink-faint: var(--cz-ink-faint);
+  --color-cz-border: var(--cz-border);
+  --color-cz-border-strong: var(--cz-border-strong);
+  --color-cz-accent: var(--cz-accent);
+  --color-cz-accent-dark: var(--cz-accent-dark);
+  --color-cz-accent-soft: var(--cz-accent-soft);
+  --color-cz-dark: var(--cz-dark);
+  --color-cz-dark-alt: var(--cz-dark-alt);
+  --color-cz-on-dark: var(--cz-on-dark);
+  --color-cz-on-dark-soft: var(--cz-on-dark-soft);
+  --color-cz-white: var(--cz-white);
+
+  --font-cz-sans: var(--cz-font-sans);
+  --font-cz-accent: var(--cz-font-accent);
+  --font-cz-arabic: var(--cz-font-arabic);
+
+  --text-cz-xs: var(--cz-text-xs);
+  --text-cz-sm: var(--cz-text-sm);
+  --text-cz-base: var(--cz-text-base);
+  --text-cz-lg: var(--cz-text-lg);
+  --text-cz-xl: var(--cz-text-xl);
+  --text-cz-2xl: var(--cz-text-2xl);
+  --text-cz-3xl: var(--cz-text-3xl);
+  --text-cz-4xl: var(--cz-text-4xl);
+  --text-cz-display: var(--cz-text-display);
+
+  --radius-cz-sm: var(--cz-radius-sm);
+  --radius-cz-md: var(--cz-radius-md);
+  --radius-cz-lg: var(--cz-radius-lg);
+  --radius-cz-xl: var(--cz-radius-xl);
+  --radius-cz-pill: var(--cz-radius-pill);
+
+  --shadow-cz-sm: var(--cz-shadow-sm);
+  --shadow-cz-md: var(--cz-shadow-md);
+  --shadow-cz-lg: var(--cz-shadow-lg);
+  --shadow-cz-accent: var(--cz-shadow-accent);
+}
+
+html.cz-scope {
+  scroll-behavior: smooth;
+}
+
+.cz-scope body {
+  font-family: var(--cz-font-sans);
+}
+
+.cz-scope ::selection {
+  background: var(--cz-accent);
+  color: var(--cz-white);
+}
+
+/*
+  Layout stays RTL (nav/button order, spacing, icons mirror correctly) but
+  the placeholder copy is Latin text — without this, the RTL bidi algorithm
+  reorders punctuation around Latin runs (e.g. a trailing period jumps to
+  the front of the sentence). unicode-bidi: plaintext derives each text
+  node's direction from its own content instead of inheriting dir="rtl",
+  which is what will let real Arabic copy and this English copy each read
+  correctly without any changes when the content is swapped later.
+*/
+.cz-scope p,
+.cz-scope h1,
+.cz-scope h2,
+.cz-scope h3,
+.cz-scope span,
+.cz-scope a,
+.cz-scope button,
+.cz-scope li,
+.cz-scope dd,
+.cz-scope dt {
+  unicode-bidi: plaintext;
+}
+
+@keyframes cz-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.cz-scope[dir="rtl"] .cz-marquee-track {
+  animation-direction: reverse;
+}
+
+.cz-marquee-track {
+  animation: cz-marquee var(--cz-marquee-duration) linear infinite;
+}
+
+.cz-marquee-track:hover,
+.cz-marquee-group:hover .cz-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cz-marquee-track {
+    animation: none;
+  }
+}
